@@ -43,7 +43,7 @@ export default function BettingTips() {
             Free<br /><span style={{ color: "var(--gold)" }}>Betting Tips</span>
           </h1>
           <p style={{ maxWidth: "520px", margin: "0 auto", color: "var(--mid)", fontSize: "1.05rem", lineHeight: 1.6 }}>
-            Get Editor Chris Kubala's free 2026 college football betting tips in a special PDF download. Get the inside line before the season kicks off.
+            Get Editor Chris Kubala's free 2026 college football betting tips in a special PDF download. Get the inside line before the season kicks off on August 22.
           </p>
         </div>
 
