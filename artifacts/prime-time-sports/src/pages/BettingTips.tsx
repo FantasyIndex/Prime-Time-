@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "wouter";
 import "../styles/prime-time.css";
 
-export default function Home() {
+export default function BettingTips() {
   const [submitted, setSubmitted] = useState(false);
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(false);
@@ -19,7 +19,7 @@ export default function Home() {
   }
 
   return (
-    <div style={{ background: "var(--cream)", color: "var(--ink)", fontFamily: "'DM Sans', sans-serif", fontWeight: 300, overflowX: "hidden" }}>
+    <div style={{ background: "var(--cream)", color: "var(--ink)", fontFamily: "'DM Sans', sans-serif", fontWeight: 300, overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
 
       {/* TOP BAR */}
       <div className="topbar">
@@ -28,75 +28,26 @@ export default function Home() {
 
       {/* NAV */}
       <nav className="pts-nav">
-        <a href="#">
+        <Link href="/">
           <img src="/logo.png" alt="Prime Time Sports" style={{ height: "91px", display: "block" }} />
-        </a>
+        </Link>
         <Link href="/betting-tips" className="nav-cta">Get Free Betting Tips</Link>
       </nav>
 
-      {/* HERO */}
-      <section className="hero">
-        <div className="hero-left">
-          <span className="issue-tag">College Football 2026</span>
-          <h1 className="hero-headline">
-            Debut<br />Issue<br /><em>Out Now</em>
+      {/* BETTING TIPS PAGE CONTENT */}
+      <main style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", paddingTop: "160px", paddingBottom: "80px" }}>
+
+        <div style={{ textAlign: "center", marginBottom: "48px" }}>
+          <div className="nl-tag" style={{ display: "inline-block", marginBottom: "16px" }}>Free Betting Tips — 2026 Season</div>
+          <h1 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(3rem, 7vw, 5.5rem)", lineHeight: 1, marginBottom: "16px" }}>
+            Free<br /><span style={{ color: "var(--gold)" }}>Betting Tips</span>
           </h1>
-          <p className="hero-sub">
-            Season preview for ACC, Big 10, Big 12, SEC, AAC, PAC 12 &amp; Sun Belt conferences. Get team profiles, player reviews, special features and more.
-          </p>
-          <div className="hero-scroll">Scroll to explore</div>
-        </div>
-        <div className="hero-right">
-          <div className="hero-graphic" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "18px" }}>
-            <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.6rem", letterSpacing: "0.18em", color: "var(--ink)", textAlign: "center", lineHeight: 1.4 }}>
-              2026 COLLEGE PREVIEW<br />
-              <span style={{ color: "var(--gold)", fontSize: "1.2rem" }}>AVAILABLE ON NEWSSTANDS &amp; AMAZON</span>
-            </div>
-            <img
-              src="/cover.jpg"
-              alt="Prime Time Sports College Football 2026"
-              style={{ width: "62%", maxWidth: "320px", height: "auto", display: "block", borderRadius: "4px", boxShadow: "-8px 8px 40px rgba(0,0,0,0.7), 4px 0 12px rgba(0,0,0,0.4)", transform: "rotate(-2deg)" }}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURES */}
-      <section className="features">
-        <div className="feature">
-          <div className="feature-num">35</div>
-          <div className="feature-label">Programs Covered</div>
-          <p className="feature-desc">Every Power conference team and key independents, for the 2026 season.</p>
-        </div>
-        <div className="feature">
-          <div className="feature-num">124</div>
-          <div className="feature-label">Pages of Expert Analysis</div>
-          <p className="feature-desc">Coaches in the hot seat, transfer winners and losers, and more. Team profiles, player reviews &amp; feature pieces.</p>
-        </div>
-        <div className="feature">
-          <div className="feature-num">2026</div>
-          <div className="feature-label">Season Tips Available Now</div>
-          <p className="feature-desc">Get our expert betting tips for the full 2026 college football season, exclusively for magazine readers.</p>
-        </div>
-      </section>
-
-      {/* NEWSLETTER */}
-      <section className="newsletter-wrap" id="newsletter">
-        <div className="newsletter-left">
-          <div className="nl-tag">Free Betting Tips — 2026 Season</div>
-          <h2 className="nl-headline">Free<br />With Magazine<br /><span>Betting Tips</span></h2>
-          <p className="nl-body">
+          <p style={{ maxWidth: "520px", margin: "0 auto", color: "var(--mid)", fontSize: "1.05rem", lineHeight: 1.6 }}>
             Get Editor Chris Kubala's free 2026 college football betting tips in a special PDF download. Get the inside line before the season kicks off.
           </p>
-          <ul className="nl-perks">
-            <li>Expert picks for every major conference matchup</li>
-            <li>Early season spreads &amp; over/under analysis</li>
-            <li>Dark horse teams &amp; upset alerts</li>
-            <li>Bowl game &amp; playoff betting previews</li>
-          </ul>
         </div>
 
-        <div className="newsletter-right">
+        <div className="newsletter-right" style={{ width: "100%", maxWidth: "520px" }}>
           {submitted ? (
             <div className="success-msg visible">
               <div className="success-icon">🏆</div>
@@ -159,7 +110,7 @@ export default function Home() {
             </form>
           )}
         </div>
-      </section>
+      </main>
 
       {/* FOOTER */}
       <footer className="pts-footer">
