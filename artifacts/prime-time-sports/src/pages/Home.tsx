@@ -44,7 +44,6 @@ export default function Home() {
           <p className="hero-sub">
             Season preview for ACC, Big 10, Big 12, SEC, AAC, PAC 12 &amp; Sun Belt conferences. Get team profiles, player reviews, special features and more.
           </p>
-          <div className="hero-scroll">Scroll to explore</div>
         </div>
         <div className="hero-right">
           <div className="hero-graphic" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "18px" }}>
