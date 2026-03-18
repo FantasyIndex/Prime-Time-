@@ -81,10 +81,10 @@ export default function Home() {
         <img src="/logo-sec.png?v=3"           alt="SEC" />
         <img src="/logo-big10.png?v=2"         alt="Big Ten" />
         <img src="/logo-big12.png?v=3"         alt="Big 12" />
-        <img src="/logo-acc.png?v=2"           alt="ACC" />
-        <img src="/logo-pac12.png?v=2"         alt="PAC-12" />
+        <img src="/logo-acc.png?v=2"           alt="ACC"    className="logo-lg" />
+        <img src="/logo-pac12.png?v=2"         alt="PAC-12" className="logo-lg" />
         <img src="/logo-aac.png?v=2"           alt="AAC" />
-        <img src="/logo-mountain-west.png?v=2" alt="Mountain West" />
+        <img src="/logo-mountain-west.png?v=2" alt="Mountain West" className="logo-lg" />
       </section>
 
       {/* NEWSLETTER */}

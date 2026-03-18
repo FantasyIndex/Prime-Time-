@@ -586,6 +586,7 @@
 }
 
 .logo-strip img:hover { opacity: 1; }
+.logo-strip img.logo-lg { height: 70px; }
 
 /* ── FOOTER ── */
 .pts-footer {
