@@ -3,17 +3,18 @@ import "../styles/prime-time.css";
 
 export default function Home() {
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    conference: "",
-    agree: false,
-  });
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const [agree, setAgree] = useState(false);
+  const [agreeError, setAgreeError] = useState(false);
+  const [form, setForm] = useState({ firstName: "", lastName: "", conference: "" });
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    let valid = true;
+    if (!email || !email.includes("@")) { setEmailError(true); valid = false; setTimeout(() => setEmailError(false), 2000); }
+    if (!agree) { setAgreeError(true); valid = false; setTimeout(() => setAgreeError(false), 2000); }
+    if (valid) setSubmitted(true);
   }
 
   return (
@@ -27,9 +28,9 @@ export default function Home() {
       {/* NAV */}
       <nav className="pts-nav">
         <a href="#">
-          <img src="/logo.png" alt="Prime Time Sports" style={{ height: "48px", display: "block" }} />
+          <img src="/logo.png" alt="Prime Time Sports" style={{ height: "76px", display: "block" }} />
         </a>
-        <a href="#" className="nav-cta">Get Free Betting Tips</a>
+        <a href="#newsletter" className="nav-cta">Get Free Betting Tips</a>
       </nav>
 
       {/* HERO */}
@@ -45,91 +46,75 @@ export default function Home() {
           <div className="hero-scroll">Scroll to explore</div>
         </div>
         <div className="hero-right">
-          <div className="hero-graphic" style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:"18px"}}>
-            <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:"1.6rem",letterSpacing:"0.18em",color:"var(--ink)",textAlign:"center",lineHeight:1.4}}>
-              2026 COLLEGE PREVIEW<br/>
-              <span style={{color:"var(--gold)",fontSize:"1.2rem"}}>AVAILABLE ON NEWSSTANDS &amp; AMAZON</span>
+          <div className="hero-graphic" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "18px" }}>
+            <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.6rem", letterSpacing: "0.18em", color: "var(--ink)", textAlign: "center", lineHeight: 1.4 }}>
+              2026 COLLEGE PREVIEW<br />
+              <span style={{ color: "var(--gold)", fontSize: "1.2rem" }}>AVAILABLE ON NEWSSTANDS &amp; AMAZON</span>
             </div>
             <img
               src="/cover.jpg"
-              alt="Prime Time Sports – 2026 College Football Preview"
-              style={{
-                width: "260px",
-                boxShadow: "0 30px 80px rgba(0,0,0,0.5)",
-                border: "1px solid rgba(200,168,75,0.4)",
-                animation: "floatCard 4s ease-in-out infinite",
-              }}
+              alt="Prime Time Sports College Football 2026"
+              style={{ width: "62%", maxWidth: "320px", height: "auto", display: "block", borderRadius: "4px", boxShadow: "-8px 8px 40px rgba(0,0,0,0.7), 4px 0 12px rgba(0,0,0,0.4)", transform: "rotate(-2deg)" }}
             />
           </div>
         </div>
       </section>
 
-      {/* FEATURES STRIP */}
-      <div className="features">
+      {/* FEATURES */}
+      <section className="features">
         <div className="feature">
-          <div className="feature-num">6</div>
-          <div className="feature-label">Conferences</div>
-          <p className="feature-desc">Complete coverage of all major college football conferences in one definitive guide.</p>
+          <div className="feature-num">35</div>
+          <div className="feature-label">Programs Covered</div>
+          <p className="feature-desc">Every Power conference team and key independents, for the 2026 season.</p>
         </div>
         <div className="feature">
-          <div className="feature-num">350+</div>
-          <div className="feature-label">Teams Profiled</div>
-          <p className="feature-desc">In-depth analysis of every program competing for the national championship this season.</p>
+          <div className="feature-num">124</div>
+          <div className="feature-label">Pages of Expert Analysis</div>
+          <p className="feature-desc">Coaches in the hot seat, transfer winners and losers, and more. Team profiles, player reviews &amp; feature pieces.</p>
         </div>
         <div className="feature">
-          <div className="feature-num">500+</div>
-          <div className="feature-label">Players Reviewed</div>
-          <p className="feature-desc">Expert scouting reports on the standout athletes you need to watch this season.</p>
+          <div className="feature-num">2026</div>
+          <div className="feature-label">Season Tips Available Now</div>
+          <p className="feature-desc">Get our expert betting tips for the full 2026 college football season, exclusively for magazine readers.</p>
         </div>
-      </div>
+      </section>
 
-      {/* NEWSLETTER / SUBSCRIBE */}
-      <div className="newsletter-wrap" id="subscribe">
+      {/* NEWSLETTER */}
+      <section className="newsletter-wrap" id="newsletter">
         <div className="newsletter-left">
-          <div className="nl-tag">Exclusive Access</div>
-          <h2 className="nl-headline">Get The <span>Inside Edge</span></h2>
+          <div className="nl-tag">Free Betting Tips — 2026 Season</div>
+          <h2 className="nl-headline">Free<br />With Magazine<br /><span>Betting Tips</span></h2>
           <p className="nl-body">
-            Join thousands of college football fans who rely on Prime Time Sports for the sharpest previews, player breakdowns, and insider coverage all season long.
+            Get Editor Chris Kubala's free 2026 college football betting tips in a special PDF download. Get the inside line before the season kicks off.
           </p>
           <ul className="nl-perks">
-            <li>Full 2026 season preview delivered to your door</li>
-            <li>Conference-by-conference team & player breakdowns</li>
-            <li>Exclusive subscriber-only digital content</li>
-            <li>Early access to future issues and special editions</li>
+            <li>Expert picks for every major conference matchup</li>
+            <li>Early season spreads &amp; over/under analysis</li>
+            <li>Dark horse teams &amp; upset alerts</li>
+            <li>Bowl game &amp; playoff betting previews</li>
           </ul>
         </div>
+
         <div className="newsletter-right">
           {submitted ? (
             <div className="success-msg visible">
               <div className="success-icon">🏆</div>
-              <h3>You're In!</h3>
-              <p>Welcome to Prime Time Sports. Your first issue is on its way — enjoy the season.</p>
+              <h3>Your Tips Are On The Way!</h3>
+              <p>Thanks for signing up! Editor Chris Kubala's free 2026 college football betting tips will be in your inbox shortly — check your spam folder just in case.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit}>
-              <div className="form-title">Order Your Copy</div>
-              <div className="form-sub">Available in print and digital editions.</div>
+              <div className="form-title">Claim Your Free Betting Tips</div>
+              <div className="form-sub">From editor Chris Kubala — for Prime Time Sports readers only. 2026 season tips delivered instantly.</div>
 
               <div className="form-row">
                 <div className="form-group">
                   <label>First Name</label>
-                  <input
-                    type="text"
-                    placeholder="John"
-                    value={form.firstName}
-                    onChange={e => setForm({ ...form, firstName: e.target.value })}
-                    required
-                  />
+                  <input type="text" placeholder="Jordan" value={form.firstName} onChange={e => setForm({ ...form, firstName: e.target.value })} />
                 </div>
                 <div className="form-group">
                   <label>Last Name</label>
-                  <input
-                    type="text"
-                    placeholder="Smith"
-                    value={form.lastName}
-                    onChange={e => setForm({ ...form, lastName: e.target.value })}
-                    required
-                  />
+                  <input type="text" placeholder="Mitchell" value={form.lastName} onChange={e => setForm({ ...form, lastName: e.target.value })} />
                 </div>
               </div>
 
@@ -137,73 +122,68 @@ export default function Home() {
                 <label>Email Address</label>
                 <input
                   type="email"
-                  placeholder="john@example.com"
-                  value={form.email}
-                  onChange={e => setForm({ ...form, email: e.target.value })}
-                  required
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  style={emailError ? { borderColor: "#B94B2A" } : {}}
                 />
               </div>
 
               <div className="form-group">
                 <label>Favorite Conference</label>
-                <select
-                  value={form.conference}
-                  onChange={e => setForm({ ...form, conference: e.target.value })}
-                >
+                <select value={form.conference} onChange={e => setForm({ ...form, conference: e.target.value })}>
                   <option value="">Select a conference…</option>
-                  <option>ACC</option>
-                  <option>Big 10</option>
-                  <option>Big 12</option>
                   <option>SEC</option>
-                  <option>AAC</option>
-                  <option>PAC 12</option>
-                  <option>Sun Belt</option>
+                  <option>Big Ten</option>
+                  <option>Big 12</option>
+                  <option>ACC</option>
+                  <option>Pac-12</option>
+                  <option>American Athletic</option>
+                  <option>Independent (Notre Dame, etc.)</option>
+                  <option>All of the above 🏈</option>
                 </select>
               </div>
 
               <div className="checkbox-row">
                 <input
                   type="checkbox"
-                  id="agree"
-                  checked={form.agree}
-                  onChange={e => setForm({ ...form, agree: e.target.checked })}
-                  required
+                  checked={agree}
+                  onChange={e => setAgree(e.target.checked)}
+                  style={agreeError ? { outline: "2px solid #B94B2A" } : {}}
                 />
-                <span>
-                  I agree to receive updates and promotional emails from Prime Time Sports. Unsubscribe anytime.
-                </span>
+                <span>I agree to receive free betting tips and updates from Prime Time Sports. I can unsubscribe at any time.</span>
               </div>
 
-              <button type="submit" className="btn-submit">Order Now — Get the Preview</button>
-              <p className="form-note">No spam. No junk. Just football.</p>
+              <button type="submit" className="btn-submit">Get My Free Betting Tips →</button>
+              <p className="form-note">🔒 No spam. No sharing your data. Ever.</p>
             </form>
           )}
         </div>
-      </div>
+      </section>
 
       {/* FOOTER */}
       <footer className="pts-footer">
         <div className="footer-col">
-          <div className="footer-brand">Prime Time <span>Sports</span></div>
-          <p className="footer-tagline">
-            The definitive college football preview magazine — delivering expert analysis, team profiles, and player spotlights every season.
-          </p>
+          <div className="footer-brand">
+            <img src="/logo.png" alt="Prime Time Sports" style={{ height: "64px", display: "block", marginBottom: "12px", filter: "brightness(0) invert(1)" }} />
+          </div>
+          <p className="footer-tagline">The definitive voice in college football publishing since 2013. Bold coverage for passionate fans.</p>
         </div>
         <div className="footer-col">
-          <h4>Quick Links</h4>
+          <h4>Publication</h4>
           <ul>
-            <li><a href="#">2026 Season Preview</a></li>
-            <li><a href="#">Conference Coverage</a></li>
-            <li><a href="#">Player Spotlights</a></li>
+            <li><a href="#">Current Issue</a></li>
+            <li><a href="#">Archives</a></li>
+            <li><a href="#">Digital Edition</a></li>
             <li><a href="#">Subscribe</a></li>
-            <li><a href="#">Find on Amazon</a></li>
+            <li><a href="#">Advertise</a></li>
           </ul>
         </div>
         <div className="footer-col">
-          <h4>Information</h4>
+          <h4>Company</h4>
           <ul>
             <li><a href="#">About Us</a></li>
-            <li><a href="#">Advertising</a></li>
+            <li><a href="#">Our Writers</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="#">Privacy Policy</a></li>
             <li><a href="#">Terms of Use</a></li>
@@ -211,7 +191,7 @@ export default function Home() {
         </div>
       </footer>
       <div className="footer-bottom">
-        © 2026 <span>Prime Time Sports</span>. All rights reserved.
+        © 2025 <span>Prime Time Sports</span> · All Rights Reserved · College Football's Premier Publication
       </div>
 
     </div>
