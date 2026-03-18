@@ -105,7 +105,6 @@ export default function Home() {
           ) : (
             <form onSubmit={handleSubmit}>
               <div className="form-title">Claim Your Free Betting Tips</div>
-              <div className="form-sub">From editor Chris Kubala — for Prime Time Sports readers only. 2026 season tips delivered instantly.</div>
 
               <div className="form-row">
                 <div className="form-group">
