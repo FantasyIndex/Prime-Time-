@@ -10,12 +10,27 @@ export default function BettingTips() {
   const [agreeError, setAgreeError] = useState(false);
   const [form, setForm] = useState({ firstName: "", lastName: "", conference: "" });
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     let valid = true;
     if (!email || !email.includes("@")) { setEmailError(true); valid = false; setTimeout(() => setEmailError(false), 2000); }
     if (!agree) { setAgreeError(true); valid = false; setTimeout(() => setAgreeError(false), 2000); }
-    if (valid) setSubmitted(true);
+    if (!valid) return;
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, firstName: form.firstName, lastName: form.lastName, conference: form.conference }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch {
+      alert("Network error. Please try again.");
+    }
   }
 
   return (
