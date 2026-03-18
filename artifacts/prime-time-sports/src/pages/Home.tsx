@@ -27,13 +27,7 @@ export default function Home() {
       {/* NAV */}
       <nav className="pts-nav">
         <a href="#" className="nav-logo">Prime Time <span>Sports</span></a>
-        <ul className="nav-links">
-          <li><a href="#">Coverage</a></li>
-          <li><a href="#">Teams</a></li>
-          <li><a href="#">Players</a></li>
-          <li><a href="#">Features</a></li>
-          <li><a href="#subscribe" className="nav-cta">Subscribe</a></li>
-        </ul>
+        <a href="#" className="nav-cta">Get Free Betting Tips</a>
       </nav>
 
       {/* HERO */}
