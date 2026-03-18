@@ -79,7 +79,6 @@ export default function Home() {
       {/* NEWSLETTER */}
       <section className="newsletter-wrap" id="newsletter">
         <div className="newsletter-left">
-          <div className="nl-tag">Free Betting Tips — 2026 Season</div>
           <h2 className="nl-headline">Free-With-Magazine<br /><span>Betting Tips</span></h2>
           <p className="nl-body">
             Get Editor Chris Kubala's free 2026 college football betting tips in a special PDF download. Emailed to you August 22.
