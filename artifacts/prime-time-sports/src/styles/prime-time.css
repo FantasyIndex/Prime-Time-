@@ -360,12 +360,13 @@
 }
 
 .newsletter-left {
-  padding: 80px 60px;
+  padding: 80px 60px 0 60px;
   background: var(--ink);
   color: var(--cream);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow: visible;
   animation: fadeUp 0.8s 0.5s ease both;
 }
 
@@ -409,12 +410,13 @@
 }
 
 .nl-player {
-  width: 100%;
-  max-width: 780px;
+  width: calc(100% + 120px);
+  max-width: none;
   height: auto;
   display: block;
-  margin-top: 24px;
-  filter: drop-shadow(0 12px 32px rgba(0,0,0,0.4));
+  margin-top: 16px;
+  margin-left: -60px;
+  filter: drop-shadow(0 16px 40px rgba(0,0,0,0.5));
 }
 
 .newsletter-right {
