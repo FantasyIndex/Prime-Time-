@@ -1,0 +1,11 @@
+{
+  "buildCommand": "pnpm --filter @workspace/prime-time-sports run build",
+  "outputDirectory": "artifacts/prime-time-sports/dist/public",
+  "installCommand": "pnpm install",
+  "env": {
+    "BASE_PATH": "/"
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
