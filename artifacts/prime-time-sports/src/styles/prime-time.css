@@ -220,6 +220,22 @@
   gap: 18px;
 }
 
+@keyframes float {
+  0%   { transform: rotate(-2deg) translateY(0px); }
+  50%  { transform: rotate(-2deg) translateY(-14px); }
+  100% { transform: rotate(-2deg) translateY(0px); }
+}
+
+.cover-float {
+  width: 62%;
+  max-width: 320px;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+  box-shadow: -8px 8px 40px rgba(0,0,0,0.7), 4px 0 12px rgba(0,0,0,0.4);
+  animation: float 4s ease-in-out infinite;
+}
+
 .hero-label {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.6rem;

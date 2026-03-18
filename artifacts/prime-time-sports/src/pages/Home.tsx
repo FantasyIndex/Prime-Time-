@@ -69,7 +69,7 @@ export default function Home() {
             <img
               src="/cover.jpg"
               alt="Prime Time Sports College Football 2026"
-              style={{ width: "62%", maxWidth: "320px", height: "auto", display: "block", borderRadius: "4px", boxShadow: "-8px 8px 40px rgba(0,0,0,0.7), 4px 0 12px rgba(0,0,0,0.4)", transform: "rotate(-2deg)" }}
+              className="cover-float"
             />
           </div>
         </div>
