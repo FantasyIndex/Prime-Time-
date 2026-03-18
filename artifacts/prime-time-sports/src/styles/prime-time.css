@@ -73,7 +73,10 @@
   background: var(--gold);
   color: var(--ink) !important;
   padding: 8px 20px;
-  font-weight: 500 !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.08em !important;
+  font-weight: 400 !important;
   transition: background 0.2s !important;
 }
 
