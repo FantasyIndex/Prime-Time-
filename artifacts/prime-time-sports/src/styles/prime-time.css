@@ -565,6 +565,28 @@
   line-height: 1.6;
 }
 
+/* ── LOGO STRIP ── */
+.logo-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 36px 60px;
+  border-bottom: 2px solid rgba(26,26,24,0.25);
+  background: var(--cream);
+}
+
+.logo-strip img {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.logo-strip img:hover { opacity: 1; }
+
 /* ── FOOTER ── */
 .pts-footer {
   background: var(--ink);
