@@ -410,12 +410,12 @@
 }
 
 .nl-player {
-  width: calc(100% + 120px);
+  width: calc(100% + 300px);
   max-width: none;
   height: auto;
   display: block;
   margin-top: 16px;
-  margin-left: -60px;
+  margin-left: -150px;
   filter: drop-shadow(0 16px 40px rgba(0,0,0,0.5));
 }
 
