@@ -80,7 +80,7 @@ export default function Home() {
       <section className="logo-strip">
         <img src="/logo-sec.png?v=3"           alt="SEC" />
         <img src="/logo-big10.png?v=2"         alt="Big Ten" />
-        <img src="/logo-big12.png?v=2"         alt="Big 12" />
+        <img src="/logo-big12.png?v=3"         alt="Big 12" />
         <img src="/logo-acc.png?v=2"           alt="ACC" />
         <img src="/logo-pac12.png?v=2"         alt="PAC-12" />
         <img src="/logo-aac.png?v=2"           alt="AAC" />
