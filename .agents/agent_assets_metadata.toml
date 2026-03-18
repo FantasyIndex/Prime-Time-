@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "Iu5EdiHkGy2yojmG4bao0"
+uri = "file://artifacts/prime-time-sports/public/player.png"
+type = "image"
+title = "Player — background removed"
