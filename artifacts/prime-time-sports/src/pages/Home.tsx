@@ -54,13 +54,16 @@ export default function Home() {
               2026 COLLEGE PREVIEW<br/>
               <span style={{color:"var(--gold)",fontSize:"1.2rem"}}>AVAILABLE ON NEWSSTANDS &amp; AMAZON</span>
             </div>
-            <div className="cover-mockup">
-              <div className="cover-vol">Vol. 1 · Issue 1 · 2026</div>
-              <div className="cover-title">Prime Time <span>Sports</span></div>
-              <div className="cover-divider" />
-              <div className="cover-img-placeholder">🏈</div>
-              <div className="cover-bottom">College Football · 2026 Season Preview</div>
-            </div>
+            <img
+              src="/cover.jpg"
+              alt="Prime Time Sports – 2026 College Football Preview"
+              style={{
+                width: "260px",
+                boxShadow: "0 30px 80px rgba(0,0,0,0.5)",
+                border: "1px solid rgba(200,168,75,0.4)",
+                animation: "floatCard 4s ease-in-out infinite",
+              }}
+            />
           </div>
         </div>
       </section>
