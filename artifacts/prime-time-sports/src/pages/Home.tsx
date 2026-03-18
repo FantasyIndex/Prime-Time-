@@ -80,12 +80,12 @@ export default function Home() {
       <section className="logo-strip">
         <img src="/logo-sec.png"           alt="SEC" />
         <img src="/logo-big10.png"         alt="Big Ten" />
-        <img src="/logo-big12.jpg"         alt="Big 12" />
+        <img src="/logo-big12.png"         alt="Big 12" />
         <img src="/logo-acc.png"           alt="ACC" />
-        <img src="/logo-pac12.jpg"         alt="PAC-12" />
+        <img src="/logo-pac12.png"         alt="PAC-12" />
         <img src="/logo-aac.png"           alt="AAC" />
         <img src="/logo-mountain-west.png" alt="Mountain West" />
-        <img src="/logo-sun-belt.jpg"      alt="Sun Belt" />
+        <img src="/logo-sun-belt.png"      alt="Sun Belt" />
       </section>
 
       {/* NEWSLETTER */}
