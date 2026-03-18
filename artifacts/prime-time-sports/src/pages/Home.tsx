@@ -100,7 +100,7 @@ export default function Home() {
           <div className="nl-tag">Free Betting Tips — 2026 Season</div>
           <h2 className="nl-headline">Free<br />With Magazine<br /><span>Betting Tips</span></h2>
           <p className="nl-body">
-            Get Editor Chris Kubala's free 2026 college football betting tips in a special PDF download. Get the inside line before the season kicks off on August 22.
+            Get Editor Chris Kubala's free 2026 college football betting tips in a special PDF download. Emailed to you August 22.
           </p>
           <ul className="nl-perks">
             <li>Expert picks for every major conference matchup</li>
