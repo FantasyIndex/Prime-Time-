@@ -26,7 +26,9 @@ export default function Home() {
 
       {/* NAV */}
       <nav className="pts-nav">
-        <a href="#" className="nav-logo">Prime Time <span>Sports</span></a>
+        <a href="#">
+          <img src="/logo.png" alt="Prime Time Sports" style={{ height: "48px", display: "block" }} />
+        </a>
         <a href="#" className="nav-cta">Get Free Betting Tips</a>
       </nav>
 
