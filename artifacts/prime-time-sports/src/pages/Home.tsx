@@ -78,7 +78,7 @@ export default function Home() {
 
       {/* LOGO STRIP */}
       <section className="logo-strip">
-        <img src="/logo-sec.png?v=2"           alt="SEC" />
+        <img src="/logo-sec.png?v=3"           alt="SEC" />
         <img src="/logo-big10.png?v=2"         alt="Big Ten" />
         <img src="/logo-big12.png?v=2"         alt="Big 12" />
         <img src="/logo-acc.png?v=2"           alt="ACC" />
