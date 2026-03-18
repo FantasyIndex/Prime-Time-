@@ -162,31 +162,7 @@ export default function Home() {
 
       {/* FOOTER */}
       <footer className="pts-footer">
-        <div className="footer-col">
-          <div className="footer-brand">
-            <img src="/logo.png" alt="Prime Time Sports" style={{ height: "64px", display: "block", marginBottom: "12px", filter: "brightness(0) invert(1)" }} />
-          </div>
-        </div>
-        <div className="footer-col">
-          <h4>Publication</h4>
-          <ul>
-            <li><a href="#">Current Issue</a></li>
-            <li><a href="#">Archives</a></li>
-            <li><a href="#">Digital Edition</a></li>
-            <li><a href="#">Subscribe</a></li>
-            <li><a href="#">Advertise</a></li>
-          </ul>
-        </div>
-        <div className="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Our Writers</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Use</a></li>
-          </ul>
-        </div>
+        <img src="/logo.png" alt="Prime Time Sports" style={{ height: "64px", display: "block", filter: "brightness(0) invert(1)" }} />
       </footer>
       <div className="footer-bottom">
         © 2025 <span>Prime Time Sports</span> · All Rights Reserved · College Football's Premier Publication

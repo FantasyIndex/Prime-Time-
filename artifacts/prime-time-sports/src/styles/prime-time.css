@@ -563,19 +563,12 @@
 /* ── FOOTER ── */
 .pts-footer {
   background: var(--ink);
-  color: rgba(250,247,242,0.5);
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  gap: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 0;
   border-top: 2px solid var(--gold);
 }
-
-.footer-col {
-  padding: 50px 50px;
-  border-right: 1px solid rgba(255,255,255,0.08);
-}
-
-.footer-col:last-child { border-right: none; }
 
 .footer-brand {
   font-family: 'Bebas Neue', sans-serif;
