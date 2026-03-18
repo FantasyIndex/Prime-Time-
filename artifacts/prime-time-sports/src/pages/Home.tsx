@@ -75,24 +75,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURES */}
-      <section className="features">
-        <div className="feature">
-          <div className="feature-num">35</div>
-          <div className="feature-label">Programs Covered</div>
-          <p className="feature-desc">Every Power conference team and key independents, for the 2026 season.</p>
-        </div>
-        <div className="feature">
-          <div className="feature-num">124</div>
-          <div className="feature-label">Pages of Expert Analysis</div>
-          <p className="feature-desc">Coaches in the hot seat, transfer winners and losers, and more. Team profiles, player reviews &amp; feature pieces.</p>
-        </div>
-        <div className="feature">
-          <div className="feature-num">2026</div>
-          <div className="feature-label">Season Tips Available Now</div>
-          <p className="feature-desc">Get our expert betting tips for the full 2026 college football season, exclusively for magazine readers.</p>
-        </div>
-      </section>
 
       {/* NEWSLETTER */}
       <section className="newsletter-wrap" id="newsletter">
