@@ -85,7 +85,6 @@ export default function Home() {
         <img src="/logo-pac12.png?v=2"         alt="PAC-12" />
         <img src="/logo-aac.png?v=2"           alt="AAC" />
         <img src="/logo-mountain-west.png?v=2" alt="Mountain West" />
-        <img src="/logo-sun-belt.png?v=2"      alt="Sun Belt" />
       </section>
 
       {/* NEWSLETTER */}
