@@ -55,7 +55,7 @@ export default function BettingTips() {
         <div style={{ textAlign: "center", marginBottom: "48px" }}>
           <div className="nl-tag" style={{ display: "inline-block", marginBottom: "16px" }}>Free Betting Tips — 2026 Season</div>
           <h1 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(3rem, 7vw, 5.5rem)", lineHeight: 1, marginBottom: "16px" }}>
-            Free<br /><span style={{ color: "var(--gold)" }}>Betting Tips</span>
+            Free-With-Magazine<br /><span style={{ color: "var(--gold)" }}>Betting Tips</span>
           </h1>
           <p style={{ maxWidth: "520px", margin: "0 auto", color: "var(--mid)", fontSize: "1.05rem", lineHeight: 1.6 }}>
             Get Editor Chris Kubala's free 2026 college football betting tips in a special PDF download. Emailed to you August 22.
