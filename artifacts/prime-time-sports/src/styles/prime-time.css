@@ -582,6 +582,7 @@
   width: auto;
   object-fit: contain;
   opacity: 0.85;
+  mix-blend-mode: multiply;
   transition: opacity 0.2s ease;
 }
 
