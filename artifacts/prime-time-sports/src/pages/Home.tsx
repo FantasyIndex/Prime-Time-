@@ -166,7 +166,6 @@ export default function Home() {
           <div className="footer-brand">
             <img src="/logo.png" alt="Prime Time Sports" style={{ height: "64px", display: "block", marginBottom: "12px", filter: "brightness(0) invert(1)" }} />
           </div>
-          <p className="footer-tagline">The definitive voice in college football publishing since 2013. Bold coverage for passionate fans.</p>
         </div>
         <div className="footer-col">
           <h4>Publication</h4>
