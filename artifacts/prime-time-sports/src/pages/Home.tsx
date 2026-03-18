@@ -83,7 +83,7 @@ export default function Home() {
         <img src="/logo-big12.png?v=3"         alt="Big 12" />
         <img src="/logo-acc.png?v=2"           alt="ACC"    className="logo-lg" />
         <img src="/logo-pac12.png?v=2"         alt="PAC-12" className="logo-lg" />
-        <img src="/logo-aac.png?v=2"           alt="AAC" />
+        <img src="/logo-aac.png?v=2"           alt="AAC" className="logo-lg" />
         <img src="/logo-mountain-west.png?v=2" alt="Mountain West" className="logo-lg" />
       </section>
 
