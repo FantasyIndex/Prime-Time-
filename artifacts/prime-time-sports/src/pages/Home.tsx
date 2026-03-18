@@ -83,12 +83,7 @@ export default function Home() {
           <p className="nl-body">
             Get Editor Chris Kubala's free 2026 college football betting tips in a special PDF download. Emailed to you August 22.
           </p>
-          <ul className="nl-perks">
-            <li>Expert picks for every major conference matchup</li>
-            <li>Early season spreads &amp; over/under analysis</li>
-            <li>Dark horse teams &amp; upset alerts</li>
-            <li>Bowl game &amp; playoff betting previews</li>
-          </ul>
+          <img src="/player.png" alt="Football player" className="nl-player" />
         </div>
 
         <div className="newsletter-right">
