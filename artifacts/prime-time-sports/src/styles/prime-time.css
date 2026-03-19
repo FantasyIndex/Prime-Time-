@@ -743,6 +743,11 @@
   }
   .nav-links { display: none; }
   .hero { grid-template-columns: 1fr; padding-top: 0; }
+  .ml-hero { flex-direction: column; min-height: auto; padding-top: 0; }
+  .ml-hero-inner { padding: 40px 24px 24px; border-right: none; border-bottom: 2px solid rgba(26,26,24,0.12); }
+  .ml-title { font-size: clamp(3rem, 14vw, 5rem); }
+  .ml-form-wrap { padding: 36px 24px; }
+  .ml-form { max-width: 100%; }
   .hero-right { min-height: 340px; }
   .hero-left { padding: 50px 28px; }
   .features { grid-template-columns: 1fr; }
