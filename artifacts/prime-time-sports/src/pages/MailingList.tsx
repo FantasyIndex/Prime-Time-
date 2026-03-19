@@ -92,9 +92,18 @@ export default function MailingList() {
                 {emailError && <span style={{ color: "#c0392b", fontSize: "0.82rem" }}>Please enter a valid email.</span>}
               </div>
 
-              <div className="form-group form-check">
-                <label style={agreeError ? { color: "#c0392b" } : {}}>
-                  <input type="checkbox" checked={agree} onChange={e => setAgree(e.target.checked)} />
+              <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "18px" }}>
+                <input
+                  type="checkbox"
+                  id="ml-agree"
+                  checked={agree}
+                  onChange={e => setAgree(e.target.checked)}
+                  style={{ width: "18px", height: "18px", minWidth: "18px", cursor: "pointer", accentColor: "var(--gold)", margin: 0 }}
+                />
+                <label
+                  htmlFor="ml-agree"
+                  style={{ fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase", color: agreeError ? "#c0392b" : "var(--mid)", cursor: "pointer", margin: 0, lineHeight: 1.4 }}
+                >
                   I agree to receive emails from Prime Time Sports
                 </label>
               </div>
