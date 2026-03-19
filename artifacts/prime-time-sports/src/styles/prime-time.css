@@ -727,7 +727,7 @@
     position: relative;
     top: auto;
     background: var(--cream);
-    padding: 10px 16px;
+    padding: 20px 16px 14px;
     flex-wrap: nowrap;
     gap: 8px;
     align-items: center;
