@@ -588,6 +588,63 @@
 .logo-strip img:hover { opacity: 1; }
 .logo-strip img.logo-lg { height: 70px; }
 
+/* ── MAILING LIST PAGE ── */
+.ml-hero {
+  display: flex;
+  align-items: stretch;
+  min-height: calc(100vh - 170px);
+  padding-top: 130px;
+}
+
+.ml-hero-inner {
+  flex: 1;
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 2px solid rgba(26,26,24,0.12);
+}
+
+.ml-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4rem, 8vw, 7rem);
+  line-height: 0.95;
+  color: var(--ink);
+  margin: 18px 0 24px;
+  letter-spacing: 0.02em;
+}
+
+.ml-title em {
+  color: var(--gold);
+  font-style: normal;
+}
+
+.ml-sub {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--ink);
+  opacity: 0.7;
+  max-width: 440px;
+  line-height: 1.6;
+}
+
+.ml-form-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+}
+
+.ml-form {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
 /* ── FOOTER ── */
 .pts-footer {
   background: var(--ink);

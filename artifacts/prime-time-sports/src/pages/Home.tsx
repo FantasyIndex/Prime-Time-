@@ -46,7 +46,10 @@ export default function Home() {
         <a href="#">
           <img src="/logo.png" alt="Prime Time Sports" style={{ height: "91px", display: "block" }} />
         </a>
-        <Link href="/betting-tips" className="nav-cta">Get Free Betting Tips</Link>
+        <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+          <Link href="/mailing-list" className="nav-cta">Join Mailing List</Link>
+          <Link href="/betting-tips" className="nav-cta">Get Free Betting Tips</Link>
+        </div>
       </nav>
 
       {/* HERO */}
