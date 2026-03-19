@@ -21,7 +21,7 @@ export default function MailingList() {
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, firstName: form.firstName, lastName: form.lastName }),
+        body: JSON.stringify({ email, firstName: form.firstName, lastName: form.lastName, source: "mailing-list" }),
       });
       if (res.ok) {
         setSubmitted(true);

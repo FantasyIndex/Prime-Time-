@@ -21,7 +21,7 @@ export default function Home() {
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, firstName: form.firstName, lastName: form.lastName, conference: form.conference }),
+        body: JSON.stringify({ email, firstName: form.firstName, lastName: form.lastName, conference: form.conference, source: "betting-tips" }),
       });
       if (res.ok) {
         setSubmitted(true);

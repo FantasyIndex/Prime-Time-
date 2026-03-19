@@ -2,8 +2,13 @@ import { Router } from "express";
 
 const router = Router();
 
+const LIST_IDS: Record<string, number> = {
+  "mailing-list": 3,
+  "betting-tips": 4,
+};
+
 router.post("/subscribe", async (req, res) => {
-  const { email, firstName, lastName, conference } = req.body;
+  const { email, firstName, lastName, conference, source } = req.body;
 
   if (!email || !email.includes("@")) {
     return res.status(400).json({ error: "Valid email is required" });
@@ -29,6 +34,7 @@ router.post("/subscribe", async (req, res) => {
           LASTNAME: lastName || "",
           CONFERENCE: conference || "",
         },
+        listIds: source && LIST_IDS[source] ? [LIST_IDS[source]] : [],
         updateEnabled: true,
       }),
     });
