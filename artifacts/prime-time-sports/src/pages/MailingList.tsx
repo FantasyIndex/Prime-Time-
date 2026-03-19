@@ -108,7 +108,7 @@ export default function MailingList() {
                 </label>
               </div>
 
-              <button type="submit" className="btn-submit">Join the List</button>
+              <button type="submit" className="btn-submit">JOIN THE LIST ✓</button>
             </form>
           )}
         </div>
