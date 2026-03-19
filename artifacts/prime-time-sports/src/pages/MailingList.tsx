@@ -57,9 +57,6 @@ export default function MailingList() {
         <div className="ml-hero-inner">
           <span className="issue-tag">Prime Time Sports</span>
           <h1 className="ml-title">Join Our<br /><em>Mailing List</em></h1>
-          <p className="ml-sub">
-            Be first to get team previews, player rankings, betting insights, and exclusive content from Editor Chris Kubala — delivered straight to your inbox.
-          </p>
         </div>
         <div className="ml-form-wrap">
           {submitted ? (
