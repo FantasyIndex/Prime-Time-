@@ -723,7 +723,25 @@
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  .pts-nav { padding: 16px 24px; }
+  .pts-nav {
+    padding: 12px 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .pts-nav > a,
+  .pts-nav > div:first-child {
+    flex: 0 0 auto;
+  }
+  .pts-nav > div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .nav-cta {
+    font-size: 0.78rem !important;
+    padding: 7px 12px;
+    letter-spacing: 0.05em !important;
+  }
   .nav-links { display: none; }
   .hero { grid-template-columns: 1fr; }
   .hero-right { min-height: 340px; }
