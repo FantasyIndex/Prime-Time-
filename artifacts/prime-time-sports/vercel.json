@@ -1,7 +1,7 @@
 {
   "framework": "vite",
   "buildCommand": "cd ../.. && pnpm --filter @workspace/prime-time-sports run build",
-  "installCommand": "npm install -g pnpm@10 && cd ../.. && pnpm install",
+  "installCommand": "corepack enable && corepack prepare pnpm@10.26.1 --activate && cd ../.. && pnpm install",
   "outputDirectory": "dist/public",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
