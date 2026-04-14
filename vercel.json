@@ -1,9 +1,4 @@
 {
-  "installCommand": "pnpm install",
-  "buildCommand": "pnpm --filter @workspace/prime-time-sports run build",
-  "outputDirectory": "artifacts/prime-time-sports/dist/public",
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  "buildCommand": "node vercel-build.mjs",
+  "installCommand": "echo 'deps handled in build script'"
 }
