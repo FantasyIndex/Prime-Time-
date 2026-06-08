@@ -475,9 +475,17 @@ export default function Poll() {
               <p style={{ fontSize: "0.95rem", lineHeight: 1.75, color: "var(--mid)", marginBottom: "24px" }}>
                 When you factor in the lightning-fast acceleration of running back De'Von Achane catching passes out of the backfield and the dynamic shiftiness of young wideout Malik Washington operating underneath, Miami's corps has the unique ability to turn a routine 4-yard slant into a 75-yard touchdown on literally any given snap.
               </p>
-              <p style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--ink)", margin: 0, letterSpacing: "0.02em" }}>
-                Chris Kubala, Editor-in-chief, Prime Time Sports
-              </p>
+              <div style={{ marginTop: "8px" }}>
+                <div style={{ fontFamily: "'Dancing Script', cursive", fontSize: "2rem", color: "var(--ink)", lineHeight: 1.1, marginBottom: "2px" }}>
+                  Chris Kubala
+                </div>
+                <div style={{ fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--mid)", lineHeight: 1.7 }}>
+                  Editor-in-chief
+                </div>
+                <div style={{ fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--mid)" }}>
+                  Prime Time Sports
+                </div>
+              </div>
             </div>
 
             {/* Closing question */}
