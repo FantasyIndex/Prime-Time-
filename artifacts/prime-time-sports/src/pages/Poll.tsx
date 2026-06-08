@@ -468,7 +468,7 @@ export default function Poll() {
                 boxShadow: "0 2px 16px rgba(0,0,0,0.07)",
               }}
             >
-              <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.2rem", letterSpacing: "0.12em", color: "var(--ink)", marginBottom: "14px" }}>
+              <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: "1.15rem", letterSpacing: "0.01em", color: "var(--ink)", marginBottom: "14px" }}>
                 Editor's Analysis: Miami Dolphins Can't Be Counted Out
               </div>
               <p style={{ fontSize: "0.95rem", lineHeight: 1.75, color: "var(--mid)", marginBottom: "18px" }}>
