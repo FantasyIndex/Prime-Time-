@@ -14,9 +14,11 @@
         (function() {
             var d = document, w = window;
             w.MgSensorData = w.MgSensorData || [];
+            var clickId = new URLSearchParams(w.location.search).get('click_id') || '';
             w.MgSensorData.push({
                 cid:980246,
-                project: "a.mgid.com"
+                project: "a.mgid.com",
+                click_id: clickId
             });
             var l = "a.mgid.com";
             var n = d.getElementsByTagName("script")[0];
