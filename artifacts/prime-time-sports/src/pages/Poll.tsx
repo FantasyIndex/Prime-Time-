@@ -37,40 +37,6 @@ const RESULTS = [
   { id: "other",   team: "Other",              pct:  5, logo: null },
 ];
 
-const ANALYSIS = [
-  {
-    id: "bengals",
-    emoji: "🐯",
-    team: "Cincinnati Bengals",
-    subtitle: "The Ultimate Duo",
-    logo: "https://a.espncdn.com/i/teamlogos/nfl/500/cin.png",
-    body: "If you believe a receiving corps is defined by its top-tier talent, the Bengals are hard to beat. Ja'Marr Chase remains one of the most explosive, game-changing wideouts in the league. Alongside him, Tee Higgins provides an elite physical presence and boundary threat that could easily make him a WR1 on half the teams in the NFL. Their case rests entirely on the fact that no cornerback duo in the league enjoys lining up against these two on Sundays.",
-  },
-  {
-    id: "bears",
-    emoji: "🐻",
-    team: "Chicago Bears",
-    subtitle: "The Deepest Trio?",
-    logo: "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png",
-    body: "The Bears have built an absolute powerhouse of a wide receiver room with three distinct flavors of elite talent: DJ Moore — a proven, physical yardage monster after the catch; Keenan Allen — one of the most reliable, master-level route runners of this generation in the slot; and Rome Odunze — a dynamic young vertical threat with an incredibly high ceiling. If you are voting for sheer variety and matching skill sets, Chicago has a massive argument.",
-  },
-  {
-    id: "rams",
-    emoji: "🐏",
-    team: "LA Rams",
-    subtitle: "Modern Day Production",
-    logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lar.png",
-    body: "The Rams showcase a masterclass in modern route running and visual deception. Puka Nacua shattered rookie records with his aggressive, physical style of play, while veteran Cooper Kupp remains a literal cheat code when healthy, finding space in the middle of the field like nobody else. When Sean McVay has both of these guys firing on all cylinders, they dictate the entire flow of an offensive game plan.",
-  },
-  {
-    id: "cowboys",
-    emoji: "🤠",
-    team: "Dallas Cowboys",
-    subtitle: "Star Power",
-    logo: "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png",
-    body: "The argument for Dallas begins and ends with CeeDee Lamb, who has firmly established himself in the tier of unguardable, elite game-breakers. While the depth behind him faces questions, Lamb's sheer volume, versatility to move all over the formation, and knack for generating explosive plays keep Dallas firmly in the conversation for the league's most dangerous air attack.",
-  },
-];
 
 function ResultBar({ result, isUserPick }: { result: typeof RESULTS[0]; isUserPick: boolean }) {
   return (
@@ -352,57 +318,21 @@ export default function Poll() {
               <span style={{ flex: 1, height: "2px", background: "rgba(0,0,0,0.1)" }} />
             </div>
 
-            {/* Analysis cards */}
-            {ANALYSIS.map((a) => (
-              <div
-                key={a.id}
-                style={{
-                  background: "white",
-                  borderRadius: "6px",
-                  padding: "28px 32px",
-                  marginBottom: "20px",
-                  boxShadow: "0 2px 16px rgba(0,0,0,0.07)",
-                  borderLeft: a.id === selected ? "4px solid var(--gold)" : "4px solid transparent",
-                }}
-              >
-                <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "14px" }}>
-                  <img src={a.logo} alt={a.team} style={{ width: "44px", height: "44px", objectFit: "contain" }} />
-                  <div>
-                    <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.3rem", letterSpacing: "0.06em", color: "var(--ink)", lineHeight: 1 }}>
-                      {a.emoji} {a.team}
-                    </div>
-                    <div style={{ fontSize: "0.78rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold)", marginTop: "2px" }}>
-                      {a.subtitle}
-                    </div>
-                  </div>
-                </div>
-                <p style={{ fontSize: "0.95rem", lineHeight: 1.75, color: "var(--mid)", margin: 0 }}>
-                  {a.body}
-                </p>
-              </div>
-            ))}
-
-            {/* Crashing Contenders */}
+            {/* Other Contenders */}
             <div
               style={{
-                background: "var(--ink)",
-                color: "var(--cream)",
+                background: "white",
                 borderRadius: "6px",
                 padding: "28px 32px",
                 marginBottom: "48px",
+                boxShadow: "0 2px 16px rgba(0,0,0,0.07)",
               }}
             >
-              <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.2rem", letterSpacing: "0.12em", color: "var(--gold)", marginBottom: "14px" }}>
-                💥 The Crashing Contenders
+              <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.2rem", letterSpacing: "0.12em", color: "var(--ink)", marginBottom: "14px" }}>
+                Other Contenders
               </div>
-              <p style={{ fontSize: "0.9rem", lineHeight: 1.75, color: "rgba(250,247,242,0.8)", marginBottom: "16px" }}>
-                Didn't see your team on the main list? Here are two other groups that could easily claim the crown:
-              </p>
-              <p style={{ fontSize: "0.9rem", lineHeight: 1.75, color: "rgba(250,247,242,0.8)", marginBottom: "10px" }}>
-                <strong style={{ color: "var(--gold)" }}>Miami Dolphins:</strong> Speed kills, and no one has more of it than Tyreek Hill and Jaylen Waddle. They can turn a simple 5-yard slant into a 75-yard touchdown in the blink of an eye.
-              </p>
-              <p style={{ fontSize: "0.9rem", lineHeight: 1.75, color: "rgba(250,247,242,0.8)", margin: 0 }}>
-                <strong style={{ color: "var(--gold)" }}>Houston Texans:</strong> A brutally underrated unit featuring Stefon Diggs, Nico Collins, and Tank Dell. They boast a terrifying mix of veteran savvy, size, and lightning-fast agility.
+              <p style={{ fontSize: "0.95rem", lineHeight: 1.75, color: "var(--mid)", margin: 0 }}>
+                While the poll features some incredible options, the debate for the NFL's best receiving corps doesn't end there. Teams like the Miami Dolphins offer unmatched, game-breaking track speed with Tyreek Hill and Jaylen Waddle, while the Philadelphia Eagles counter with the flawless physical and tactical balance of A.J. Brown and DeVonta Smith. Meanwhile, the Houston Texans boast a terrifyingly deep, young trio spearheaded by Nico Collins, and the Detroit Lions rely on the elite, chain-moving consistency of Amon-Ra St. Brown. Whether you favor pure speed, a balanced 1-2 punch, or overwhelming depth, there is a strong case to be made for looking outside the box.
               </p>
             </div>
 
