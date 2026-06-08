@@ -84,7 +84,7 @@ export default function Poll() {
   const [voted, setVoted] = useState(false);       // vote submitted
   const [gated, setGated] = useState(true);        // gate still showing
   const [gateForm, setGateForm] = useState({ firstName: "", lastName: "", email: "" });
-  const [gateAgree, setGateAgree] = useState(false);
+  const [gateAgree, setGateAgree] = useState(true);
   const [gateError, setGateError] = useState("");
   const [gateSubmitting, setGateSubmitting] = useState(false);
   const [comments, setComments] = useState<Comment[]>(loadComments);

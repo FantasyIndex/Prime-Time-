@@ -6,7 +6,7 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(false);
-  const [agree, setAgree] = useState(false);
+  const [agree, setAgree] = useState(true);
   const [agreeError, setAgreeError] = useState(false);
   const [form, setForm] = useState({ firstName: "", lastName: "", conference: "" });
 
