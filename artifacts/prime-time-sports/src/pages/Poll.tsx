@@ -467,7 +467,7 @@ export default function Poll() {
               }}
             >
               <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.2rem", letterSpacing: "0.12em", color: "var(--ink)", marginBottom: "14px" }}>
-                Editor's Analysis: Miami Can't be Counted Out
+                Editor's Analysis: Miami Dolphins Can't Be Counted Out
               </div>
               <p style={{ fontSize: "0.95rem", lineHeight: 1.75, color: "var(--mid)", marginBottom: "18px" }}>
                 In Tyreek Hill and Jaylen Waddle, Miami boasts a duo that completely alters the geometry of a football field. They don't just beat coverages; they force defensive coordinators to play fundamentally different styles of football just to keep a roof on the defense.
