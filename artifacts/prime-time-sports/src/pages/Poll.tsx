@@ -325,66 +325,86 @@ export default function Poll() {
             </button>
           </>
         ) : gated ? (
-          /* ── GATE FORM ── */
-          <div style={{ width: "100%", maxWidth: "520px", textAlign: "center" }}>
-            <div style={{ fontSize: "2.6rem", marginBottom: "16px" }}>🔒</div>
-            <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1rem", letterSpacing: "0.2em", color: "var(--gold)", marginBottom: "10px" }}>
-              Vote Recorded
+          /* ── GATE PAGE ── */
+          <div style={{ width: "100%", maxWidth: "760px" }}>
+
+            {/* Vote confirmation — big and clear */}
+            <div style={{ textAlign: "center", marginBottom: "44px" }}>
+              {winner?.logo ? (
+                <img src={winner.logo} alt={winner.team} style={{ width: "80px", height: "80px", objectFit: "contain", marginBottom: "16px" }} />
+              ) : (
+                <div style={{ fontSize: "3.5rem", marginBottom: "16px" }}>🏈</div>
+              )}
+              <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1rem", letterSpacing: "0.2em", color: "var(--gold)", marginBottom: "8px" }}>
+                Vote Recorded
+              </div>
+              <h2 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 800, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", lineHeight: 1.15, color: "var(--ink)", margin: 0 }}>
+                You voted for <span style={{ color: "var(--gold)" }}>{displayName}</span>
+              </h2>
             </div>
-            <h2 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 800, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", lineHeight: 1.2, color: "var(--ink)", marginBottom: "12px" }}>
-              See the full results
-            </h2>
-            <p style={{ fontSize: "0.95rem", color: "var(--mid)", lineHeight: 1.7, marginBottom: "32px" }}>
-              Enter your details below to unlock the results breakdown, analysis, and join the conversation.
-            </p>
-            <form onSubmit={handleGate} style={{ background: "white", borderRadius: "6px", padding: "28px 32px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)", textAlign: "left" }}>
+
+            {/* Teaser results — ? logos, bars visible */}
+            <div style={{ background: "white", borderRadius: "6px", padding: "28px 32px", marginBottom: "24px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)" }}>
+              <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.1rem", letterSpacing: "0.15em", color: "var(--ink)", marginBottom: "20px" }}>
+                Current Results
+              </div>
+              {RESULTS.map((r) => (
+                <div key={r.id} style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "14px" }}>
+                  {/* Mystery logo */}
+                  <div style={{ width: "32px", height: "32px", borderRadius: "50%", background: "rgba(0,0,0,0.08)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "'Bebas Neue', sans-serif", fontSize: "1rem", color: "var(--mid)" }}>
+                    ?
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "5px" }}>
+                      <span style={{ fontSize: "0.82rem", color: "var(--mid)", letterSpacing: "0.04em" }}>Team {RESULTS.indexOf(r) + 1}</span>
+                      <span style={{ fontSize: "0.82rem", color: "rgba(0,0,0,0.2)", filter: "blur(4px)", userSelect: "none" }}>??%</span>
+                    </div>
+                    <div style={{ height: "8px", background: "rgba(0,0,0,0.08)", borderRadius: "4px", overflow: "hidden" }}>
+                      <div style={{ height: "100%", width: `${r.pct}%`, background: "rgba(0,0,0,0.12)", borderRadius: "4px" }} />
+                    </div>
+                  </div>
+                </div>
+              ))}
+              <p style={{ fontSize: "0.72rem", color: "var(--mid)", marginTop: "16px", marginBottom: 0, letterSpacing: "0.05em" }}>
+                Sign up below to reveal the full breakdown
+              </p>
+            </div>
+
+            {/* Sign-up form */}
+            <form onSubmit={handleGate} style={{ background: "white", borderRadius: "6px", padding: "28px 32px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)" }}>
+              <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.1rem", letterSpacing: "0.12em", color: "var(--ink)", marginBottom: "6px" }}>
+                Unlock the Full Results
+              </div>
+              <p style={{ fontSize: "0.85rem", color: "var(--mid)", marginBottom: "20px", lineHeight: 1.6 }}>
+                Sign up free to see which team came out on top, read the full breakdown, and join the conversation.
+              </p>
               <div style={{ display: "flex", gap: "14px", marginBottom: "14px" }}>
                 <div style={{ flex: 1 }}>
-                  <label style={{ display: "block", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--mid)", marginBottom: "6px" }}>First Name</label>
-                  <input
-                    type="text"
-                    placeholder="Jordan"
-                    value={gateForm.firstName}
-                    onChange={e => setGateForm({ ...gateForm, firstName: e.target.value })}
-                    style={{ width: "100%", padding: "12px 14px", fontSize: "0.9rem", fontFamily: "'DM Sans', sans-serif", border: "2px solid rgba(0,0,0,0.12)", borderRadius: "4px", color: "var(--ink)", outline: "none", boxSizing: "border-box" }}
-                  />
+                  <label style={{ display: "block", fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--mid)", marginBottom: "6px" }}>First Name</label>
+                  <input type="text" placeholder="Jordan" value={gateForm.firstName} onChange={e => setGateForm({ ...gateForm, firstName: e.target.value })}
+                    style={{ width: "100%", padding: "12px 14px", fontSize: "0.9rem", fontFamily: "'DM Sans', sans-serif", border: "2px solid rgba(0,0,0,0.12)", borderRadius: "4px", color: "var(--ink)", outline: "none", boxSizing: "border-box" }} />
                 </div>
                 <div style={{ flex: 1 }}>
-                  <label style={{ display: "block", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--mid)", marginBottom: "6px" }}>Last Name</label>
-                  <input
-                    type="text"
-                    placeholder="Mitchell"
-                    value={gateForm.lastName}
-                    onChange={e => setGateForm({ ...gateForm, lastName: e.target.value })}
-                    style={{ width: "100%", padding: "12px 14px", fontSize: "0.9rem", fontFamily: "'DM Sans', sans-serif", border: "2px solid rgba(0,0,0,0.12)", borderRadius: "4px", color: "var(--ink)", outline: "none", boxSizing: "border-box" }}
-                  />
+                  <label style={{ display: "block", fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--mid)", marginBottom: "6px" }}>Last Name</label>
+                  <input type="text" placeholder="Mitchell" value={gateForm.lastName} onChange={e => setGateForm({ ...gateForm, lastName: e.target.value })}
+                    style={{ width: "100%", padding: "12px 14px", fontSize: "0.9rem", fontFamily: "'DM Sans', sans-serif", border: "2px solid rgba(0,0,0,0.12)", borderRadius: "4px", color: "var(--ink)", outline: "none", boxSizing: "border-box" }} />
                 </div>
               </div>
               <div style={{ marginBottom: "18px" }}>
-                <label style={{ display: "block", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--mid)", marginBottom: "6px" }}>Email Address *</label>
-                <input
-                  type="email"
-                  placeholder="you@example.com"
-                  value={gateForm.email}
-                  onChange={e => setGateForm({ ...gateForm, email: e.target.value })}
-                  style={{ width: "100%", padding: "12px 14px", fontSize: "0.9rem", fontFamily: "'DM Sans', sans-serif", border: "2px solid rgba(0,0,0,0.12)", borderRadius: "4px", color: "var(--ink)", outline: "none", boxSizing: "border-box" }}
-                />
+                <label style={{ display: "block", fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--mid)", marginBottom: "6px" }}>Email Address *</label>
+                <input type="email" placeholder="you@example.com" value={gateForm.email} onChange={e => setGateForm({ ...gateForm, email: e.target.value })}
+                  style={{ width: "100%", padding: "12px 14px", fontSize: "0.9rem", fontFamily: "'DM Sans', sans-serif", border: "2px solid rgba(0,0,0,0.12)", borderRadius: "4px", color: "var(--ink)", outline: "none", boxSizing: "border-box" }} />
               </div>
               <div style={{ display: "flex", alignItems: "flex-start", gap: "10px", marginBottom: "20px" }}>
-                <input
-                  type="checkbox"
-                  id="gate-agree"
-                  checked={gateAgree}
-                  onChange={e => setGateAgree(e.target.checked)}
-                  style={{ width: "16px", height: "16px", minWidth: "16px", marginTop: "2px", cursor: "pointer", accentColor: "var(--gold)" }}
-                />
-                <label htmlFor="gate-agree" style={{ fontSize: "0.75rem", letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--mid)", cursor: "pointer", lineHeight: 1.5 }}>
+                <input type="checkbox" id="gate-agree" checked={gateAgree} onChange={e => setGateAgree(e.target.checked)}
+                  style={{ width: "16px", height: "16px", minWidth: "16px", marginTop: "2px", cursor: "pointer", accentColor: "var(--gold)" }} />
+                <label htmlFor="gate-agree" style={{ fontSize: "0.72rem", letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--mid)", cursor: "pointer", lineHeight: 1.5 }}>
                   I agree to receive emails from Prime Time Sports
                 </label>
               </div>
               {gateError && <p style={{ color: "#c0392b", fontSize: "0.8rem", marginBottom: "12px" }}>{gateError}</p>}
               <button type="submit" className="btn-submit" disabled={gateSubmitting} style={{ width: "100%", fontSize: "1rem", padding: "14px", letterSpacing: "0.12em" }}>
-                {gateSubmitting ? "Unlocking…" : "Unlock Results →"}
+                {gateSubmitting ? "Unlocking…" : "Reveal Full Results →"}
               </button>
               <p style={{ textAlign: "center", fontSize: "0.72rem", color: "var(--mid)", marginTop: "12px", marginBottom: 0 }}>🔒 No spam. No sharing your data. Ever.</p>
             </form>
