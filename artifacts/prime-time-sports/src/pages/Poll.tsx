@@ -81,7 +81,12 @@ function ResultBar({ result, isUserPick }: { result: typeof RESULTS[0]; isUserPi
 export default function Poll() {
   const [selected, setSelected] = useState<string | null>(null);
   const [otherText, setOtherText] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [voted, setVoted] = useState(false);       // vote submitted
+  const [gated, setGated] = useState(true);        // gate still showing
+  const [gateForm, setGateForm] = useState({ firstName: "", lastName: "", email: "" });
+  const [gateAgree, setGateAgree] = useState(false);
+  const [gateError, setGateError] = useState("");
+  const [gateSubmitting, setGateSubmitting] = useState(false);
   const [comments, setComments] = useState<Comment[]>(loadComments);
   const [commentName, setCommentName] = useState("");
   const [commentText, setCommentText] = useState("");
@@ -89,10 +94,30 @@ export default function Poll() {
 
   const isOther = selected === "other";
   const canSubmit = selected !== null && (selected !== "other" || otherText.trim().length > 0);
+  const submitted = voted && !gated;
 
   function handleVote() {
     if (!canSubmit) return;
-    setSubmitted(true);
+    setVoted(true);
+    setGated(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  async function handleGate(e: React.FormEvent) {
+    e.preventDefault();
+    if (!gateForm.email || !gateForm.email.includes("@")) { setGateError("Please enter a valid email address."); return; }
+    if (!gateAgree) { setGateError("Please agree to receive emails to continue."); return; }
+    setGateError("");
+    setGateSubmitting(true);
+    try {
+      await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: gateForm.email, firstName: gateForm.firstName, lastName: gateForm.lastName, source: "poll" }),
+      });
+    } catch { /* fail silently — still show results */ }
+    setGateSubmitting(false);
+    setGated(false);
   }
 
   function handleComment(e: React.FormEvent) {
@@ -161,7 +186,7 @@ export default function Poll() {
           <span style={{ display: "inline-block", width: "32px", height: "3px", background: "var(--gold)" }} />
         </div>
 
-        {!submitted ? (
+        {!voted ? (
           <>
             {/* Question */}
             <h1
@@ -299,6 +324,71 @@ export default function Poll() {
               Submit My Vote →
             </button>
           </>
+        ) : gated ? (
+          /* ── GATE FORM ── */
+          <div style={{ width: "100%", maxWidth: "520px", textAlign: "center" }}>
+            <div style={{ fontSize: "2.6rem", marginBottom: "16px" }}>🔒</div>
+            <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1rem", letterSpacing: "0.2em", color: "var(--gold)", marginBottom: "10px" }}>
+              Vote Recorded
+            </div>
+            <h2 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 800, fontSize: "clamp(1.6rem, 4vw, 2.4rem)", lineHeight: 1.2, color: "var(--ink)", marginBottom: "12px" }}>
+              See the full results
+            </h2>
+            <p style={{ fontSize: "0.95rem", color: "var(--mid)", lineHeight: 1.7, marginBottom: "32px" }}>
+              Enter your details below to unlock the results breakdown, analysis, and join the conversation.
+            </p>
+            <form onSubmit={handleGate} style={{ background: "white", borderRadius: "6px", padding: "28px 32px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)", textAlign: "left" }}>
+              <div style={{ display: "flex", gap: "14px", marginBottom: "14px" }}>
+                <div style={{ flex: 1 }}>
+                  <label style={{ display: "block", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--mid)", marginBottom: "6px" }}>First Name</label>
+                  <input
+                    type="text"
+                    placeholder="Jordan"
+                    value={gateForm.firstName}
+                    onChange={e => setGateForm({ ...gateForm, firstName: e.target.value })}
+                    style={{ width: "100%", padding: "12px 14px", fontSize: "0.9rem", fontFamily: "'DM Sans', sans-serif", border: "2px solid rgba(0,0,0,0.12)", borderRadius: "4px", color: "var(--ink)", outline: "none", boxSizing: "border-box" }}
+                  />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <label style={{ display: "block", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--mid)", marginBottom: "6px" }}>Last Name</label>
+                  <input
+                    type="text"
+                    placeholder="Mitchell"
+                    value={gateForm.lastName}
+                    onChange={e => setGateForm({ ...gateForm, lastName: e.target.value })}
+                    style={{ width: "100%", padding: "12px 14px", fontSize: "0.9rem", fontFamily: "'DM Sans', sans-serif", border: "2px solid rgba(0,0,0,0.12)", borderRadius: "4px", color: "var(--ink)", outline: "none", boxSizing: "border-box" }}
+                  />
+                </div>
+              </div>
+              <div style={{ marginBottom: "18px" }}>
+                <label style={{ display: "block", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--mid)", marginBottom: "6px" }}>Email Address *</label>
+                <input
+                  type="email"
+                  placeholder="you@example.com"
+                  value={gateForm.email}
+                  onChange={e => setGateForm({ ...gateForm, email: e.target.value })}
+                  style={{ width: "100%", padding: "12px 14px", fontSize: "0.9rem", fontFamily: "'DM Sans', sans-serif", border: "2px solid rgba(0,0,0,0.12)", borderRadius: "4px", color: "var(--ink)", outline: "none", boxSizing: "border-box" }}
+                />
+              </div>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: "10px", marginBottom: "20px" }}>
+                <input
+                  type="checkbox"
+                  id="gate-agree"
+                  checked={gateAgree}
+                  onChange={e => setGateAgree(e.target.checked)}
+                  style={{ width: "16px", height: "16px", minWidth: "16px", marginTop: "2px", cursor: "pointer", accentColor: "var(--gold)" }}
+                />
+                <label htmlFor="gate-agree" style={{ fontSize: "0.75rem", letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--mid)", cursor: "pointer", lineHeight: 1.5 }}>
+                  I agree to receive emails from Prime Time Sports
+                </label>
+              </div>
+              {gateError && <p style={{ color: "#c0392b", fontSize: "0.8rem", marginBottom: "12px" }}>{gateError}</p>}
+              <button type="submit" className="btn-submit" disabled={gateSubmitting} style={{ width: "100%", fontSize: "1rem", padding: "14px", letterSpacing: "0.12em" }}>
+                {gateSubmitting ? "Unlocking…" : "Unlock Results →"}
+              </button>
+              <p style={{ textAlign: "center", fontSize: "0.72rem", color: "var(--mid)", marginTop: "12px", marginBottom: 0 }}>🔒 No spam. No sharing your data. Ever.</p>
+            </form>
+          </div>
         ) : (
           /* ── RESULTS PAGE ── */
           <div style={{ width: "100%", maxWidth: "760px" }}>
