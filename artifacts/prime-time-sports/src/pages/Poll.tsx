@@ -488,10 +488,6 @@ export default function Poll() {
               </div>
             </div>
 
-            {/* Closing question */}
-            <p style={{ textAlign: "center", fontSize: "1rem", fontWeight: 600, color: "var(--ink)", lineHeight: 1.7, marginBottom: "48px" }}>
-              What matters most to you? A single unguardable superstar, a pair of lethal weapons, or a trio where anyone can lead the team in targets on any given week?
-            </p>
 
             {/* Comments section */}
             <div style={{ marginBottom: "56px" }}>
