@@ -1,0 +1,1 @@
+- [GitHub push config](github-push.md) — local branch is `master`, GitHub is `main`; use `master:main`; classic PAT with `repo` scope required
