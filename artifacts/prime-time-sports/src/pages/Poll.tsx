@@ -31,14 +31,19 @@ const OPTIONS = [
 
 export default function Poll() {
   const [selected, setSelected] = useState<string | null>(null);
+  const [otherText, setOtherText] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
+  const isOther = selected === "other";
+  const canSubmit = selected !== null && (selected !== "other" || otherText.trim().length > 0);
+
   function handleVote() {
-    if (!selected) return;
+    if (!canSubmit) return;
     setSubmitted(true);
   }
 
   const winner = OPTIONS.find((o) => o.id === selected);
+  const displayName = isOther ? otherText.trim() : winner?.team;
 
   return (
     <div
@@ -96,32 +101,11 @@ export default function Poll() {
             marginBottom: "24px",
           }}
         >
-          <span
-            style={{
-              display: "inline-block",
-              width: "32px",
-              height: "3px",
-              background: "var(--gold)",
-            }}
-          />
-          <span
-            style={{
-              fontFamily: "'Bebas Neue', sans-serif",
-              letterSpacing: "0.2em",
-              fontSize: "0.9rem",
-              color: "var(--gold)",
-            }}
-          >
+          <span style={{ display: "inline-block", width: "32px", height: "3px", background: "var(--gold)" }} />
+          <span style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.2em", fontSize: "0.9rem", color: "var(--gold)" }}>
             Fan Poll
           </span>
-          <span
-            style={{
-              display: "inline-block",
-              width: "32px",
-              height: "3px",
-              background: "var(--gold)",
-            }}
-          />
+          <span style={{ display: "inline-block", width: "32px", height: "3px", background: "var(--gold)" }} />
         </div>
 
         {!submitted ? (
@@ -144,7 +128,7 @@ export default function Poll() {
               <span style={{ color: "var(--gold)" }}>best</span> receiving corps entering 2026?
             </h1>
 
-            {/* Options */}
+            {/* 4 main options — 2 col grid */}
             <div
               style={{
                 display: "grid",
@@ -152,7 +136,7 @@ export default function Poll() {
                 gap: "20px",
                 width: "100%",
                 maxWidth: "760px",
-                marginBottom: "40px",
+                marginBottom: "20px",
               }}
             >
               {OPTIONS.map((opt) => {
@@ -168,9 +152,7 @@ export default function Poll() {
                       gap: "6px",
                       padding: "28px 28px",
                       background: isSelected ? "var(--ink)" : "white",
-                      border: isSelected
-                        ? "2.5px solid var(--gold)"
-                        : "2.5px solid transparent",
+                      border: isSelected ? "2.5px solid var(--gold)" : "2.5px solid transparent",
                       borderRadius: "4px",
                       cursor: "pointer",
                       textAlign: "left",
@@ -208,16 +190,7 @@ export default function Poll() {
                       {opt.tagline}
                     </span>
                     {isSelected && (
-                      <span
-                        style={{
-                          marginTop: "8px",
-                          fontSize: "0.72rem",
-                          letterSpacing: "0.12em",
-                          textTransform: "uppercase",
-                          color: "var(--gold)",
-                          fontWeight: 600,
-                        }}
-                      >
+                      <span style={{ marginTop: "8px", fontSize: "0.72rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--gold)", fontWeight: 600 }}>
                         ✓ My Pick
                       </span>
                     )}
@@ -226,14 +199,85 @@ export default function Poll() {
               })}
             </div>
 
+            {/* Other — full width */}
+            <div style={{ width: "100%", maxWidth: "760px", marginBottom: "40px" }}>
+              <button
+                onClick={() => setSelected("other")}
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  gap: "6px",
+                  padding: "24px 28px",
+                  background: isOther ? "var(--ink)" : "white",
+                  border: isOther ? "2.5px solid var(--gold)" : "2.5px solid transparent",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  textAlign: "left",
+                  transition: "all 0.18s ease",
+                  boxShadow: isOther
+                    ? "0 4px 24px rgba(200,168,75,0.18)"
+                    : "0 2px 12px rgba(0,0,0,0.07)",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "'Bebas Neue', sans-serif",
+                    fontSize: "1.55rem",
+                    letterSpacing: "0.06em",
+                    color: isOther ? "var(--gold)" : "var(--ink)",
+                    lineHeight: 1,
+                  }}
+                >
+                  Other
+                </span>
+                <span
+                  style={{
+                    fontSize: "0.8rem",
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    color: isOther ? "rgba(255,255,255,0.65)" : "var(--mid)",
+                  }}
+                >
+                  Tell us which team you think deserves it
+                </span>
+              </button>
+
+              {/* Text input — slides in when Other is selected */}
+              {isOther && (
+                <div style={{ marginTop: "12px" }}>
+                  <input
+                    autoFocus
+                    type="text"
+                    placeholder="Which team? (e.g. San Francisco 49ers)"
+                    value={otherText}
+                    onChange={(e) => setOtherText(e.target.value)}
+                    style={{
+                      width: "100%",
+                      padding: "16px 20px",
+                      fontSize: "1rem",
+                      fontFamily: "'DM Sans', sans-serif",
+                      border: "2px solid var(--ink)",
+                      borderRadius: "4px",
+                      background: "white",
+                      color: "var(--ink)",
+                      boxSizing: "border-box",
+                      outline: "none",
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+
             {/* Submit */}
             <button
               onClick={handleVote}
-              disabled={!selected}
+              disabled={!canSubmit}
               className="btn-submit"
               style={{
-                opacity: selected ? 1 : 0.4,
-                cursor: selected ? "pointer" : "not-allowed",
+                opacity: canSubmit ? 1 : 0.4,
+                cursor: canSubmit ? "pointer" : "not-allowed",
                 fontSize: "1rem",
                 letterSpacing: "0.12em",
                 padding: "16px 48px",
@@ -254,9 +298,13 @@ export default function Poll() {
               padding: "40px 0",
             }}
           >
-            <div style={{ marginBottom: "20px" }}>
-              <img src={winner?.logo} alt={winner?.team} style={{ width: "80px", height: "80px", objectFit: "contain" }} />
-            </div>
+            {winner?.logo ? (
+              <div style={{ marginBottom: "20px" }}>
+                <img src={winner.logo} alt={winner.team} style={{ width: "80px", height: "80px", objectFit: "contain" }} />
+              </div>
+            ) : (
+              <div style={{ fontSize: "4rem", marginBottom: "20px" }}>🏈</div>
+            )}
             <div
               style={{
                 fontFamily: "'Bebas Neue', sans-serif",
@@ -278,17 +326,10 @@ export default function Poll() {
                 marginBottom: "20px",
               }}
             >
-              {winner?.team} Getting{" "}
+              {displayName} Getting{" "}
               <span style={{ color: "var(--gold)" }}>Your Vote!</span>
             </h2>
-            <p
-              style={{
-                fontSize: "1rem",
-                color: "var(--mid)",
-                lineHeight: 1.7,
-                marginBottom: "40px",
-              }}
-            >
+            <p style={{ fontSize: "1rem", color: "var(--mid)", lineHeight: 1.7, marginBottom: "40px" }}>
               Thanks for weighing in. Follow Prime Time Sports for the latest
               NFL &amp; college football coverage heading into 2026.
             </p>
