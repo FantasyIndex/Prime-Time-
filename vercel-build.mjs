@@ -1,5 +1,5 @@
 import { execSync } from "child_process";
-import { cpSync, mkdirSync, writeFileSync, existsSync } from "fs";
+import { existsSync } from "fs";
 import { resolve } from "path";
 
 const run = (cmd) => {
@@ -32,37 +32,4 @@ if (!existsSync(builtDir)) {
   process.exit(1);
 }
 
-// 5. Write Vercel output
-console.log("\n=== Writing Vercel output ===");
-const outputDir = resolve(".vercel/output");
-mkdirSync(`${outputDir}/static`, { recursive: true });
-
-cpSync(builtDir, `${outputDir}/static`, { recursive: true });
-
-// 6. Bundle API serverless function
-console.log("\n=== Bundling API function ===");
-const funcDir = `${outputDir}/functions/api/subscribe.func`;
-mkdirSync(funcDir, { recursive: true });
-cpSync(resolve("api/subscribe.js"), `${funcDir}/index.js`);
-writeFileSync(
-  `${funcDir}/.vc-config.json`,
-  JSON.stringify({ runtime: "nodejs20.x", handler: "index.js", launcherType: "Nodejs" }, null, 2)
-);
-
-writeFileSync(
-  `${outputDir}/config.json`,
-  JSON.stringify(
-    {
-      version: 3,
-      routes: [
-        { src: "/api/subscribe", dest: "/api/subscribe" },
-        { handle: "filesystem" },
-        { src: "/(.*)", dest: "/index.html" },
-      ],
-    },
-    null,
-    2
-  )
-);
-
-console.log("\n✓ Done — Vercel output ready.");
+console.log("\n✓ Done — static build ready.");
