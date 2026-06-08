@@ -81,7 +81,7 @@ export default function Poll() {
       <section
         style={{
           flex: 1,
-          padding: "64px 160px 80px",
+          padding: "180px 160px 80px",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
