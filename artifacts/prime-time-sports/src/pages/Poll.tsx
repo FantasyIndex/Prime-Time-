@@ -124,7 +124,7 @@ export default function Poll() {
                 color: "var(--ink)",
               }}
             >
-              Which team has the absolute{" "}
+              Which NFL team has the absolute{" "}
               <span style={{ color: "var(--gold)" }}>best</span> receiving corps entering 2026?
             </h1>
 
