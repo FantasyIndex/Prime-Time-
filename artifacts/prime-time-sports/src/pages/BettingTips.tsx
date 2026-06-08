@@ -56,7 +56,7 @@ export default function BettingTips() {
       <main style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", paddingTop: "160px", paddingBottom: "80px" }}>
 
         <div style={{ textAlign: "center", marginBottom: "48px" }}>
-          <h1 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(3rem, 7vw, 5.5rem)", lineHeight: 1, marginBottom: "16px" }}>
+          <h1 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 800, fontSize: "clamp(3rem, 7vw, 5.5rem)", lineHeight: 1, marginBottom: "16px" }}>
             Free-With-Magazine<br /><span style={{ color: "var(--gold)" }}>Betting Tips</span>
           </h1>
           <p style={{ maxWidth: "520px", margin: "0 auto", color: "var(--mid)", fontSize: "1.05rem", lineHeight: 1.6 }}>

@@ -65,7 +65,7 @@ export default function Home() {
         </div>
         <div className="hero-right">
           <div className="hero-graphic" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "18px" }}>
-            <div style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "1.6rem", letterSpacing: "0.18em", color: "var(--ink)", textAlign: "center", lineHeight: 1.4 }}>
+            <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.6rem", letterSpacing: "0.18em", color: "var(--ink)", textAlign: "center", lineHeight: 1.4 }}>
               2026 COLLEGE PREVIEW<br />
               <span style={{ color: "var(--gold)", fontSize: "1.2rem" }}>AVAILABLE ON NEWSSTANDS &amp; AMAZON</span>
             </div>

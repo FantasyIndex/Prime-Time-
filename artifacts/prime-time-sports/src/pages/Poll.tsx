@@ -180,7 +180,7 @@ export default function Poll() {
         {/* Eyebrow */}
         <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "24px" }}>
           <span style={{ display: "inline-block", width: "32px", height: "3px", background: "var(--gold)" }} />
-          <span style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: "0.2em", fontSize: "0.9rem", color: "var(--gold)" }}>
+          <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, letterSpacing: "0.2em", fontSize: "0.9rem", color: "var(--gold)" }}>
             Fan Poll
           </span>
           <span style={{ display: "inline-block", width: "32px", height: "3px", background: "var(--gold)" }} />
@@ -239,7 +239,7 @@ export default function Poll() {
                     }}
                   >
                     <img src={opt.logo} alt={opt.team} style={{ width: "52px", height: "52px", objectFit: "contain" }} />
-                    <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.55rem", letterSpacing: "0.06em", color: isSelected ? "var(--gold)" : "var(--ink)", lineHeight: 1 }}>
+                    <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.55rem", letterSpacing: "0.06em", color: isSelected ? "var(--gold)" : "var(--ink)", lineHeight: 1 }}>
                       {opt.team}
                     </span>
                     <span style={{ fontSize: "0.8rem", letterSpacing: "0.08em", textTransform: "uppercase", color: isSelected ? "rgba(255,255,255,0.65)" : "var(--mid)", lineHeight: 1.3 }}>
@@ -275,7 +275,7 @@ export default function Poll() {
                   boxShadow: isOther ? "0 4px 24px rgba(200,168,75,0.18)" : "0 2px 12px rgba(0,0,0,0.07)",
                 }}
               >
-                <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.55rem", letterSpacing: "0.06em", color: isOther ? "var(--gold)" : "var(--ink)", lineHeight: 1 }}>
+                <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.55rem", letterSpacing: "0.06em", color: isOther ? "var(--gold)" : "var(--ink)", lineHeight: 1 }}>
                   Other
                 </span>
                 <span style={{ fontSize: "0.8rem", letterSpacing: "0.08em", textTransform: "uppercase", color: isOther ? "rgba(255,255,255,0.65)" : "var(--mid)" }}>
@@ -335,7 +335,7 @@ export default function Poll() {
               ) : (
                 <div style={{ fontSize: "3.5rem", marginBottom: "16px" }}>🏈</div>
               )}
-              <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1rem", letterSpacing: "0.2em", color: "var(--gold)", marginBottom: "8px" }}>
+              <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1rem", letterSpacing: "0.2em", color: "var(--gold)", marginBottom: "8px" }}>
                 Vote Recorded
               </div>
               <h2 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 800, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", lineHeight: 1.15, color: "var(--ink)", margin: 0 }}>
@@ -345,7 +345,7 @@ export default function Poll() {
 
             {/* Teaser results — ? logos, bars visible */}
             <div style={{ background: "white", borderRadius: "6px", padding: "28px 32px", marginBottom: "24px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)" }}>
-              <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.1rem", letterSpacing: "0.15em", color: "var(--ink)", marginBottom: "20px" }}>
+              <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.1rem", letterSpacing: "0.15em", color: "var(--ink)", marginBottom: "20px" }}>
                 Current Results
               </div>
               {RESULTS.map((r) => (
@@ -354,7 +354,7 @@ export default function Poll() {
                   {r.logo ? (
                     <img src={r.logo} alt="" style={{ width: "32px", height: "32px", objectFit: "contain", flexShrink: 0, filter: "blur(4px)", opacity: 0.6 }} />
                   ) : (
-                    <div style={{ width: "32px", height: "32px", borderRadius: "50%", background: "rgba(0,0,0,0.08)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "'Bebas Neue', sans-serif", fontSize: "1rem", color: "var(--mid)" }}>?</div>
+                    <div style={{ width: "32px", height: "32px", borderRadius: "50%", background: "rgba(0,0,0,0.08)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1rem", color: "var(--mid)" }}>?</div>
                   )}
                   <div style={{ flex: 1 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "5px" }}>
@@ -374,7 +374,7 @@ export default function Poll() {
 
             {/* Sign-up form */}
             <form onSubmit={handleGate} style={{ background: "white", borderRadius: "6px", padding: "28px 32px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)" }}>
-              <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.1rem", letterSpacing: "0.12em", color: "var(--ink)", marginBottom: "6px" }}>
+              <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.1rem", letterSpacing: "0.12em", color: "var(--ink)", marginBottom: "6px" }}>
                 Unlock the Full Results
               </div>
               <p style={{ fontSize: "0.85rem", color: "var(--mid)", marginBottom: "20px", lineHeight: 1.6 }}>
@@ -422,7 +422,7 @@ export default function Poll() {
               ) : (
                 <div style={{ fontSize: "3rem", marginBottom: "16px" }}>🏈</div>
               )}
-              <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1rem", letterSpacing: "0.2em", color: "var(--gold)", marginBottom: "8px" }}>
+              <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1rem", letterSpacing: "0.2em", color: "var(--gold)", marginBottom: "8px" }}>
                 Vote Recorded
               </div>
               <h2 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 800, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", lineHeight: 1.15, color: "var(--ink)", margin: 0 }}>
@@ -440,7 +440,7 @@ export default function Poll() {
                 boxShadow: "0 2px 16px rgba(0,0,0,0.07)",
               }}
             >
-              <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.1rem", letterSpacing: "0.15em", color: "var(--ink)", marginBottom: "24px" }}>
+              <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.1rem", letterSpacing: "0.15em", color: "var(--ink)", marginBottom: "24px" }}>
                 Current Results
               </div>
               {RESULTS.map((r) => (
@@ -454,7 +454,7 @@ export default function Poll() {
             {/* Divider */}
             <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "36px" }}>
               <span style={{ flex: 1, height: "2px", background: "rgba(0,0,0,0.1)" }} />
-              <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1rem", letterSpacing: "0.2em", color: "var(--gold)" }}>The Breakdown</span>
+              <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1rem", letterSpacing: "0.2em", color: "var(--gold)" }}>The Breakdown</span>
               <span style={{ flex: 1, height: "2px", background: "rgba(0,0,0,0.1)" }} />
             </div>
 
@@ -496,13 +496,13 @@ export default function Poll() {
               {/* Divider */}
               <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
                 <span style={{ flex: 1, height: "2px", background: "rgba(0,0,0,0.1)" }} />
-                <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1rem", letterSpacing: "0.2em", color: "var(--gold)" }}>Comments</span>
+                <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1rem", letterSpacing: "0.2em", color: "var(--gold)" }}>Comments</span>
                 <span style={{ flex: 1, height: "2px", background: "rgba(0,0,0,0.1)" }} />
               </div>
 
               {/* Comment form */}
               <form onSubmit={handleComment} style={{ background: "white", borderRadius: "6px", padding: "28px 32px", marginBottom: "24px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)" }}>
-                <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.1rem", letterSpacing: "0.12em", color: "var(--ink)", marginBottom: "20px" }}>
+                <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.1rem", letterSpacing: "0.12em", color: "var(--ink)", marginBottom: "20px" }}>
                   Drop Your Thoughts
                 </div>
                 <div style={{ display: "flex", gap: "14px", marginBottom: "14px" }}>
@@ -536,7 +536,7 @@ export default function Poll() {
                     <div key={c.id} style={{ background: "white", borderRadius: "6px", padding: "20px 24px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
                         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                          <div style={{ width: "34px", height: "34px", borderRadius: "50%", background: "var(--ink)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--gold)", fontFamily: "'Bebas Neue', sans-serif", fontSize: "1rem", flexShrink: 0 }}>
+                          <div style={{ width: "34px", height: "34px", borderRadius: "50%", background: "var(--ink)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--gold)", fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1rem", flexShrink: 0 }}>
                             {c.name.charAt(0).toUpperCase()}
                           </div>
                           <div>
@@ -565,7 +565,7 @@ export default function Poll() {
                   padding: "14px 32px",
                   border: "2px solid var(--ink)",
                   color: "var(--ink)",
-                  fontFamily: "'Bebas Neue', sans-serif",
+                  fontFamily: "'DM Sans', sans-serif", fontWeight: 700,
                   letterSpacing: "0.12em",
                   fontSize: "1rem",
                   textDecoration: "none",
