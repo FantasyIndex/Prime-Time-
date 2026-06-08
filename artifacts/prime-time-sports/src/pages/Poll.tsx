@@ -129,19 +129,19 @@ export default function Poll() {
             {/* Question */}
             <h1
               style={{
-                fontFamily: "'Bebas Neue', sans-serif",
-                fontSize: "clamp(2rem, 5vw, 3.6rem)",
-                letterSpacing: "0.04em",
+                fontFamily: "'DM Sans', sans-serif",
+                fontWeight: 800,
+                fontSize: "clamp(2rem, 5vw, 3.2rem)",
+                letterSpacing: "-0.01em",
                 textAlign: "center",
-                lineHeight: 1.15,
+                lineHeight: 1.2,
                 maxWidth: "780px",
                 marginBottom: "56px",
                 color: "var(--ink)",
               }}
             >
               Which team has the absolute{" "}
-              <span style={{ color: "var(--gold)" }}>BEST</span> receiving corps
-              entering 2026?
+              <span style={{ color: "var(--gold)" }}>best</span> receiving corps entering 2026?
             </h1>
 
             {/* Options */}
