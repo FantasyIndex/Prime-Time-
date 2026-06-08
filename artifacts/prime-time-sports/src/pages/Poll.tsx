@@ -168,15 +168,7 @@ export default function Poll() {
       </nav>
 
       {/* POLL SECTION */}
-      <section
-        style={{
-          flex: 1,
-          padding: "180px 160px 80px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
+      <section className="poll-section">
         {/* Eyebrow */}
         <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "24px" }}>
           <span style={{ display: "inline-block", width: "32px", height: "3px", background: "var(--gold)" }} />
@@ -207,16 +199,7 @@ export default function Poll() {
             </h1>
 
             {/* 4 main options — 2 col grid */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(2, 1fr)",
-                gap: "20px",
-                width: "100%",
-                maxWidth: "760px",
-                marginBottom: "20px",
-              }}
-            >
+            <div className="poll-grid">
               {OPTIONS.map((opt) => {
                 const isSelected = selected === opt.id;
                 return (
@@ -344,7 +327,7 @@ export default function Poll() {
             </div>
 
             {/* Teaser results — ? logos, bars visible */}
-            <div style={{ background: "white", borderRadius: "6px", padding: "28px 32px", marginBottom: "24px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)" }}>
+            <div className="poll-card" style={{ background: "white", borderRadius: "6px", marginBottom: "24px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)" }}>
               <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.1rem", letterSpacing: "0.15em", color: "var(--ink)", marginBottom: "20px" }}>
                 Current Results
               </div>
@@ -373,20 +356,20 @@ export default function Poll() {
             </div>
 
             {/* Sign-up form */}
-            <form onSubmit={handleGate} style={{ background: "white", borderRadius: "6px", padding: "28px 32px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)" }}>
+            <form onSubmit={handleGate} className="poll-card" style={{ background: "white", borderRadius: "6px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)" }}>
               <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.1rem", letterSpacing: "0.12em", color: "var(--ink)", marginBottom: "6px" }}>
                 Unlock the Full Results
               </div>
               <p style={{ fontSize: "0.85rem", color: "var(--mid)", marginBottom: "20px", lineHeight: 1.6 }}>
                 Sign up free to see which team came out on top, read the full breakdown, and join the conversation.
               </p>
-              <div style={{ display: "flex", gap: "14px", marginBottom: "14px" }}>
-                <div style={{ flex: 1 }}>
+              <div className="poll-name-row">
+                <div>
                   <label style={{ display: "block", fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--mid)", marginBottom: "6px" }}>First Name</label>
                   <input type="text" placeholder="Jordan" value={gateForm.firstName} onChange={e => setGateForm({ ...gateForm, firstName: e.target.value })}
                     style={{ width: "100%", padding: "12px 14px", fontSize: "0.9rem", fontFamily: "'DM Sans', sans-serif", border: "2px solid rgba(0,0,0,0.12)", borderRadius: "4px", color: "var(--ink)", outline: "none", boxSizing: "border-box" }} />
                 </div>
-                <div style={{ flex: 1 }}>
+                <div>
                   <label style={{ display: "block", fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--mid)", marginBottom: "6px" }}>Last Name</label>
                   <input type="text" placeholder="Mitchell" value={gateForm.lastName} onChange={e => setGateForm({ ...gateForm, lastName: e.target.value })}
                     style={{ width: "100%", padding: "12px 14px", fontSize: "0.9rem", fontFamily: "'DM Sans', sans-serif", border: "2px solid rgba(0,0,0,0.12)", borderRadius: "4px", color: "var(--ink)", outline: "none", boxSizing: "border-box" }} />
@@ -431,15 +414,7 @@ export default function Poll() {
             </div>
 
             {/* Results bar chart */}
-            <div
-              style={{
-                background: "white",
-                borderRadius: "6px",
-                padding: "32px",
-                marginBottom: "52px",
-                boxShadow: "0 2px 16px rgba(0,0,0,0.07)",
-              }}
-            >
+            <div className="poll-card" style={{ background: "white", borderRadius: "6px", marginBottom: "52px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)" }}>
               <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.1rem", letterSpacing: "0.15em", color: "var(--ink)", marginBottom: "24px" }}>
                 Current Results
               </div>
@@ -458,16 +433,8 @@ export default function Poll() {
               <span style={{ flex: 1, height: "2px", background: "rgba(0,0,0,0.1)" }} />
             </div>
 
-            {/* Other Contenders */}
-            <div
-              style={{
-                background: "white",
-                borderRadius: "6px",
-                padding: "28px 32px",
-                marginBottom: "48px",
-                boxShadow: "0 2px 16px rgba(0,0,0,0.07)",
-              }}
-            >
+            {/* Editor's Analysis */}
+            <div className="poll-card" style={{ background: "white", borderRadius: "6px", marginBottom: "48px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)" }}>
               <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: "1.15rem", letterSpacing: "0.01em", color: "var(--ink)", marginBottom: "14px" }}>
                 Editor's Analysis: Miami Dolphins Can't Be Counted Out
               </div>
@@ -501,7 +468,7 @@ export default function Poll() {
               </div>
 
               {/* Comment form */}
-              <form onSubmit={handleComment} style={{ background: "white", borderRadius: "6px", padding: "28px 32px", marginBottom: "24px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)" }}>
+              <form onSubmit={handleComment} className="poll-card" style={{ background: "white", borderRadius: "6px", marginBottom: "24px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)" }}>
                 <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.1rem", letterSpacing: "0.12em", color: "var(--ink)", marginBottom: "20px" }}>
                   Drop Your Thoughts
                 </div>
