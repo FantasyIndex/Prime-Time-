@@ -2,6 +2,15 @@ import { useState } from "react";
 import { Link } from "wouter";
 import "../styles/prime-time.css";
 
+type Comment = { id: number; name: string; text: string; team: string; ts: string };
+
+function loadComments(): Comment[] {
+  try { return JSON.parse(localStorage.getItem("poll-comments") || "[]"); } catch { return []; }
+}
+function saveComments(cs: Comment[]) {
+  localStorage.setItem("poll-comments", JSON.stringify(cs));
+}
+
 const OPTIONS = [
   {
     id: "bengals",
@@ -73,6 +82,10 @@ export default function Poll() {
   const [selected, setSelected] = useState<string | null>(null);
   const [otherText, setOtherText] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [comments, setComments] = useState<Comment[]>(loadComments);
+  const [commentName, setCommentName] = useState("");
+  const [commentText, setCommentText] = useState("");
+  const [commentError, setCommentError] = useState("");
 
   const isOther = selected === "other";
   const canSubmit = selected !== null && (selected !== "other" || otherText.trim().length > 0);
@@ -80,6 +93,21 @@ export default function Poll() {
   function handleVote() {
     if (!canSubmit) return;
     setSubmitted(true);
+  }
+
+  function handleComment(e: React.FormEvent) {
+    e.preventDefault();
+    if (!commentText.trim()) { setCommentError("Please write a comment before submitting."); return; }
+    const teamLabel = selected === "other" ? otherText.trim() : (OPTIONS.find(o => o.id === selected)?.team ?? "Other");
+    const next: Comment[] = [
+      { id: Date.now(), name: commentName.trim() || "Anonymous", text: commentText.trim(), team: teamLabel, ts: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) },
+      ...comments,
+    ];
+    setComments(next);
+    saveComments(next);
+    setCommentName("");
+    setCommentText("");
+    setCommentError("");
   }
 
   const winner = OPTIONS.find((o) => o.id === selected);
@@ -337,9 +365,71 @@ export default function Poll() {
             </div>
 
             {/* Closing question */}
-            <p style={{ textAlign: "center", fontSize: "1rem", fontWeight: 600, color: "var(--ink)", lineHeight: 1.7, marginBottom: "40px" }}>
+            <p style={{ textAlign: "center", fontSize: "1rem", fontWeight: 600, color: "var(--ink)", lineHeight: 1.7, marginBottom: "48px" }}>
               What matters most to you? A single unguardable superstar, a pair of lethal weapons, or a trio where anyone can lead the team in targets on any given week?
             </p>
+
+            {/* Comments section */}
+            <div style={{ marginBottom: "56px" }}>
+              {/* Divider */}
+              <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
+                <span style={{ flex: 1, height: "2px", background: "rgba(0,0,0,0.1)" }} />
+                <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1rem", letterSpacing: "0.2em", color: "var(--gold)" }}>Comments</span>
+                <span style={{ flex: 1, height: "2px", background: "rgba(0,0,0,0.1)" }} />
+              </div>
+
+              {/* Comment form */}
+              <form onSubmit={handleComment} style={{ background: "white", borderRadius: "6px", padding: "28px 32px", marginBottom: "24px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)" }}>
+                <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.1rem", letterSpacing: "0.12em", color: "var(--ink)", marginBottom: "20px" }}>
+                  Drop Your Thoughts
+                </div>
+                <div style={{ display: "flex", gap: "14px", marginBottom: "14px" }}>
+                  <input
+                    type="text"
+                    placeholder="Your name (optional)"
+                    value={commentName}
+                    onChange={e => setCommentName(e.target.value)}
+                    style={{ flex: 1, padding: "12px 16px", fontSize: "0.9rem", fontFamily: "'DM Sans', sans-serif", border: "2px solid rgba(0,0,0,0.12)", borderRadius: "4px", background: "var(--cream)", color: "var(--ink)", outline: "none" }}
+                  />
+                </div>
+                <textarea
+                  placeholder="Defend your vote or make the case for another team..."
+                  value={commentText}
+                  onChange={e => setCommentText(e.target.value)}
+                  rows={4}
+                  style={{ width: "100%", padding: "12px 16px", fontSize: "0.9rem", fontFamily: "'DM Sans', sans-serif", border: "2px solid rgba(0,0,0,0.12)", borderRadius: "4px", background: "var(--cream)", color: "var(--ink)", outline: "none", resize: "vertical", boxSizing: "border-box", marginBottom: "6px" }}
+                />
+                {commentError && <p style={{ color: "#c0392b", fontSize: "0.8rem", margin: "0 0 10px" }}>{commentError}</p>}
+                <button type="submit" className="btn-submit" style={{ fontSize: "0.9rem", padding: "12px 32px", letterSpacing: "0.1em" }}>
+                  Post Comment →
+                </button>
+              </form>
+
+              {/* Comment list */}
+              {comments.length === 0 ? (
+                <p style={{ textAlign: "center", color: "var(--mid)", fontSize: "0.9rem" }}>No comments yet — be the first to weigh in!</p>
+              ) : (
+                <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                  {comments.map(c => (
+                    <div key={c.id} style={{ background: "white", borderRadius: "6px", padding: "20px 24px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                          <div style={{ width: "34px", height: "34px", borderRadius: "50%", background: "var(--ink)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--gold)", fontFamily: "'Bebas Neue', sans-serif", fontSize: "1rem", flexShrink: 0 }}>
+                            {c.name.charAt(0).toUpperCase()}
+                          </div>
+                          <div>
+                            <div style={{ fontWeight: 700, fontSize: "0.88rem", color: "var(--ink)" }}>{c.name}</div>
+                            <div style={{ fontSize: "0.72rem", color: "var(--gold)", letterSpacing: "0.06em", textTransform: "uppercase" }}>Voted: {c.team}</div>
+                          </div>
+                        </div>
+                        <span style={{ fontSize: "0.72rem", color: "var(--mid)" }}>{c.ts}</span>
+                      </div>
+                      <p style={{ margin: 0, fontSize: "0.92rem", lineHeight: 1.7, color: "var(--mid)" }}>{c.text}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* CTAs */}
             <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
