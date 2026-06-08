@@ -467,10 +467,16 @@ export default function Poll() {
               }}
             >
               <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "1.2rem", letterSpacing: "0.12em", color: "var(--ink)", marginBottom: "14px" }}>
-                Other Contenders
+                Editor's Analysis
               </div>
-              <p style={{ fontSize: "0.95rem", lineHeight: 1.75, color: "var(--mid)", margin: 0 }}>
-                While the poll features some incredible options, the debate for the NFL's best receiving corps doesn't end there. Teams like the Miami Dolphins offer unmatched, game-breaking track speed with Tyreek Hill and Jaylen Waddle, while the Philadelphia Eagles counter with the flawless physical and tactical balance of A.J. Brown and DeVonta Smith. Meanwhile, the Houston Texans boast a terrifyingly deep, young trio spearheaded by Nico Collins, and the Detroit Lions rely on the elite, chain-moving consistency of Amon-Ra St. Brown. Whether you favor pure speed, a balanced 1-2 punch, or overwhelming depth, there is a strong case to be made for looking outside the box.
+              <p style={{ fontSize: "0.95rem", lineHeight: 1.75, color: "var(--mid)", marginBottom: "18px" }}>
+                In Tyreek Hill and Jaylen Waddle, Miami boasts a duo that completely alters the geometry of a football field. They don't just beat coverages; they force defensive coordinators to play fundamentally different styles of football just to keep a roof on the defense.
+              </p>
+              <p style={{ fontSize: "0.95rem", lineHeight: 1.75, color: "var(--mid)", marginBottom: "24px" }}>
+                When you factor in the lightning-fast acceleration of running back De'Von Achane catching passes out of the backfield and the dynamic shiftiness of young wideout Malik Washington operating underneath, Miami's corps has the unique ability to turn a routine 4-yard slant into a 75-yard touchdown on literally any given snap.
+              </p>
+              <p style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--ink)", margin: 0, letterSpacing: "0.02em" }}>
+                Chris Kubala, Editor-in-chief, Prime Time Sports
               </p>
             </div>
 
