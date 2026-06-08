@@ -5,25 +5,25 @@ import "../styles/prime-time.css";
 const OPTIONS = [
   {
     id: "bengals",
-    team: "Bengals",
+    team: "Cincinnati Bengals",
     tagline: "Chase & Higgins duo",
     logo: "https://a.espncdn.com/i/teamlogos/nfl/500/cin.png",
   },
   {
     id: "cowboys",
-    team: "Cowboys",
+    team: "Dallas Cowboys",
     tagline: "CeeDee Lamb dominance",
     logo: "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png",
   },
   {
     id: "rams",
-    team: "Rams",
+    team: "Los Angeles Rams",
     tagline: "Nacua & Kupp tactical depth",
     logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lar.png",
   },
   {
     id: "bears",
-    team: "Bears",
+    team: "Chicago Bears",
     tagline: "Odunze & Burden youth movement",
     logo: "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png",
   },
