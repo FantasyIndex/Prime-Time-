@@ -7,25 +7,25 @@ const OPTIONS = [
     id: "bengals",
     team: "Bengals",
     tagline: "Chase & Higgins duo",
-    icon: "🐯",
+    logo: "https://a.espncdn.com/i/teamlogos/nfl/500/cin.png",
   },
   {
     id: "cowboys",
     team: "Cowboys",
     tagline: "CeeDee Lamb dominance",
-    icon: "⭐",
+    logo: "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png",
   },
   {
     id: "rams",
     team: "Rams",
     tagline: "Nacua & Kupp tactical depth",
-    icon: "🐏",
+    logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lar.png",
   },
   {
     id: "bears",
     team: "Bears",
     tagline: "Odunze & Burden youth movement",
-    icon: "🐻",
+    logo: "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png",
   },
 ];
 
@@ -180,9 +180,11 @@ export default function Poll() {
                         : "0 2px 12px rgba(0,0,0,0.07)",
                     }}
                   >
-                    <span style={{ fontSize: "1.8rem", lineHeight: 1 }}>
-                      {opt.icon}
-                    </span>
+                    <img
+                      src={opt.logo}
+                      alt={opt.team}
+                      style={{ width: "52px", height: "52px", objectFit: "contain" }}
+                    />
                     <span
                       style={{
                         fontFamily: "'Bebas Neue', sans-serif",
@@ -252,8 +254,8 @@ export default function Poll() {
               padding: "40px 0",
             }}
           >
-            <div style={{ fontSize: "4rem", marginBottom: "20px" }}>
-              {winner?.icon}
+            <div style={{ marginBottom: "20px" }}>
+              <img src={winner?.logo} alt={winner?.team} style={{ width: "80px", height: "80px", objectFit: "contain" }} />
             </div>
             <div
               style={{
