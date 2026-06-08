@@ -39,14 +39,24 @@ mkdirSync(`${outputDir}/static`, { recursive: true });
 
 cpSync(builtDir, `${outputDir}/static`, { recursive: true });
 
+// 6. Bundle API serverless function
+console.log("\n=== Bundling API function ===");
+const funcDir = `${outputDir}/functions/api/subscribe.func`;
+mkdirSync(funcDir, { recursive: true });
+cpSync(resolve("api/subscribe.js"), `${funcDir}/index.js`);
+writeFileSync(
+  `${funcDir}/.vc-config.json`,
+  JSON.stringify({ runtime: "nodejs20.x", handler: "index.js", launcherType: "Nodejs" }, null, 2)
+);
+
 writeFileSync(
   `${outputDir}/config.json`,
   JSON.stringify(
     {
       version: 3,
       routes: [
+        { src: "/api/subscribe", dest: "/api/subscribe" },
         { handle: "filesystem" },
-        { src: "/api/(.*)", dest: "/api/$1" },
         { src: "/(.*)", dest: "/index.html" },
       ],
     },
