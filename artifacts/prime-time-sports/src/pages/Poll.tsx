@@ -356,7 +356,7 @@ export default function Poll() {
                   </div>
                   <div style={{ flex: 1 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "5px" }}>
-                      <span style={{ fontSize: "0.82rem", color: "var(--mid)", letterSpacing: "0.04em" }}>Team {RESULTS.indexOf(r) + 1}</span>
+                      <span style={{ fontSize: "0.82rem", color: "var(--mid)", letterSpacing: "0.04em" }}>{RESULTS.indexOf(r) === 4 ? "Other" : `Team ${RESULTS.indexOf(r) + 1}`}</span>
                       <span style={{ fontSize: "0.82rem", color: "rgba(0,0,0,0.2)", filter: "blur(4px)", userSelect: "none" }}>??%</span>
                     </div>
                     <div style={{ height: "8px", background: "rgba(0,0,0,0.08)", borderRadius: "4px", overflow: "hidden" }}>
