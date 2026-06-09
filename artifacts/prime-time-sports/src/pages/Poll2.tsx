@@ -304,7 +304,7 @@ export default function Poll2() {
               {gateError && <p style={{ fontSize: "0.82rem", color: "#B94B2A", marginBottom: "14px" }}>{gateError}</p>}
               <button type="submit" disabled={gateSubmitting}
                 style={{ width: "100%", padding: "16px", background: "var(--ink)", color: "var(--gold)", border: "none", borderRadius: "4px", fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.15em", textTransform: "uppercase", cursor: "pointer" }}>
-                {gateSubmitting ? "Just a sec…" : "See Full Results →"}
+                {gateSubmitting ? "Submitting…" : "Submit"}
               </button>
             </form>
           </div>

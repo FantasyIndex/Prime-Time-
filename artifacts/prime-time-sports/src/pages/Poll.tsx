@@ -382,7 +382,7 @@ export default function Poll() {
               </div>
               {gateError && <p style={{ color: "#c0392b", fontSize: "0.8rem", marginBottom: "12px" }}>{gateError}</p>}
               <button type="submit" className="btn-submit" disabled={gateSubmitting} style={{ width: "100%", fontSize: "1rem", padding: "14px", letterSpacing: "0.12em" }}>
-                {gateSubmitting ? "Unlocking…" : "Reveal Full Results →"}
+                {gateSubmitting ? "Submitting…" : "Submit"}
               </button>
               <p style={{ textAlign: "center", fontSize: "0.72rem", color: "var(--mid)", marginTop: "12px", marginBottom: 0 }}>🔒 No spam. No sharing your data. Ever.</p>
             </form>
