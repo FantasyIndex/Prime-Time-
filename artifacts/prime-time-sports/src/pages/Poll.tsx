@@ -333,12 +333,8 @@ export default function Poll() {
               </div>
               {RESULTS.map((r) => (
                 <div key={r.id} style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "14px" }}>
-                  {/* Blurred logo */}
-                  {r.logo ? (
-                    <img src={r.logo} alt="" style={{ width: "32px", height: "32px", objectFit: "contain", flexShrink: 0, filter: "blur(4px)", opacity: 0.6 }} />
-                  ) : (
-                    <div style={{ width: "32px", height: "32px", borderRadius: "50%", background: "rgba(0,0,0,0.08)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1rem", color: "var(--mid)" }}>?</div>
-                  )}
+                  {/* Question mark placeholder */}
+                  <div style={{ width: "32px", height: "32px", borderRadius: "50%", background: "rgba(0,0,0,0.08)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.1rem", color: "var(--mid)" }}>?</div>
                   <div style={{ flex: 1 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "5px" }}>
                       <span style={{ fontSize: "0.82rem", color: "var(--mid)", letterSpacing: "0.04em" }}>{RESULTS.indexOf(r) === 4 ? "Other" : `Team ${RESULTS.indexOf(r) + 1}`}</span>
