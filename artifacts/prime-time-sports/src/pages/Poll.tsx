@@ -354,10 +354,10 @@ export default function Poll() {
             {/* Sign-up form */}
             <form onSubmit={handleGate} className="poll-card" style={{ background: "white", borderRadius: "6px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)" }}>
               <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.1rem", letterSpacing: "0.12em", color: "var(--ink)", marginBottom: "6px" }}>
-                Unlock the Full Results
+                Want to Keep Taking Polls?
               </div>
               <p style={{ fontSize: "0.85rem", color: "var(--mid)", marginBottom: "20px", lineHeight: 1.6 }}>
-                Sign up free to see which team came out on top, read the full breakdown, and join the conversation.
+                Sign up free to get new polls every week, see full results, and get exclusive picks from the Prime Time Sports crew.
               </p>
               <div className="poll-name-row">
                 <div>
