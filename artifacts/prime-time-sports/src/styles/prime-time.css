@@ -753,7 +753,7 @@
 /* ── POLL PAGE ── */
 .poll-section {
   flex: 1;
-  padding: 120px 60px 80px;
+  padding: 170px 60px 80px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
