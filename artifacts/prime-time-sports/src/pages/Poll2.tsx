@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "wouter";
+import { Link, useParams } from "wouter";
 import "../styles/prime-time.css";
 
 type Phase = "vote" | "results" | "gate";
@@ -358,10 +358,11 @@ function ResultBar({ name, pct, logo, isUserPick }: { name: string; pct: number;
 }
 
 export default function Poll2() {
-  const [pollIndex,    setPollIndex]    = useState(0);
+  const { id } = useParams<{ id: string }>();
+  const pollIndex = Math.max(0, Math.min(parseInt(id ?? "1") - 1, POLLS.length - 1));
+
   const [phase,        setPhase]        = useState<Phase>("vote");
-  const [signedUp,     setSignedUp]     = useState(false);
-  const [votes,        setVotes]        = useState<Record<number, string>>({});
+  const [signedUp,     setSignedUp]     = useState(() => localStorage.getItem("pts_signed_up") === "1");
   const [selected,     setSelected]     = useState<string | null>(null);
   const [countdown,    setCountdown]    = useState(5);
   const [gateForm,     setGateForm]     = useState({ firstName: "", lastName: "", email: "" });
@@ -370,7 +371,6 @@ export default function Poll2() {
   const [gateSubmitting, setGateSubmitting] = useState(false);
 
   const poll = POLLS[pollIndex];
-  const nextPoll = POLLS[(pollIndex + 1) % POLLS.length];
 
   /* ── countdown within results, then advance to next poll ── */
   useEffect(() => {
@@ -381,10 +381,8 @@ export default function Poll2() {
         if (prev <= 1) {
           clearInterval(id);
           setTimeout(() => {
-            const next = (pollIndex + 1) % POLLS.length;
-            setPollIndex(next);
-            setSelected(null);
-            setPhase("vote");
+            const nextIndex = (pollIndex + 1) % POLLS.length;
+            window.location.href = `/poll/${nextIndex + 1}`;
           }, 200);
           return 0;
         }
@@ -397,7 +395,6 @@ export default function Poll2() {
   function handleVote(e: React.FormEvent) {
     e.preventDefault();
     if (!selected) return;
-    setVotes(v => ({ ...v, [pollIndex]: selected }));
     const needsGate = pollIndex === GATE_POLL_INDEX && !signedUp;
     setPhase(needsGate ? "gate" : "results");
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -417,13 +414,13 @@ export default function Poll2() {
       });
     } catch { /* fail silently */ }
     setGateSubmitting(false);
+    localStorage.setItem("pts_signed_up", "1");
     setSignedUp(true);
     setPhase("results");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  const currentVote  = votes[pollIndex] ?? selected;
-  const winnerOption = poll.options.find(o => o.id === currentVote);
+  const winnerOption = poll.options.find(o => o.id === selected);
 
   return (
     <div style={{ background: "var(--cream)", color: "var(--ink)", fontFamily: "'DM Sans', sans-serif", fontWeight: 300, overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
@@ -483,7 +480,7 @@ export default function Poll2() {
             </div>
             <div className="poll-card" style={{ background: "white", borderRadius: "6px", marginBottom: "24px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)" }}>
               <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.1rem", letterSpacing: "0.15em", color: "var(--ink)", marginBottom: "20px" }}>Current Results</div>
-              {poll.results.map(r => <ResultBar key={r.id} name={r.name} pct={r.pct} logo={r.logo} isUserPick={r.id === currentVote} />)}
+              {poll.results.map(r => <ResultBar key={r.id} name={r.name} pct={r.pct} logo={r.logo} isUserPick={r.id === selected} />)}
             </div>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginTop: "8px" }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2.5" strokeLinecap="round" style={{ animation: "spin 1s linear infinite", flexShrink: 0 }}>
