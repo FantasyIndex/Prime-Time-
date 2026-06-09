@@ -76,6 +76,10 @@ export default function Home() {
                 className="cover-float"
               />
             </a>
+            <a href="https://www.amazon.com/dp/B0H26X59TV" target="_blank" rel="noopener noreferrer"
+              style={{ display: "inline-block", marginTop: "4px", padding: "14px 36px", background: "var(--ink)", color: "var(--gold)", fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.15em", textTransform: "uppercase", borderRadius: "4px", textDecoration: "none" }}>
+              Buy on Amazon
+            </a>
           </div>
         </div>
       </section>
