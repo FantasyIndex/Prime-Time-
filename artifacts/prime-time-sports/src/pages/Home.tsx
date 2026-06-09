@@ -62,13 +62,13 @@ export default function Home() {
           <p className="hero-sub">
             Season preview for ACC, Big 10, Big 12, SEC, AAC, PAC 12 &amp; Sun Belt conferences. Get team profiles, player reviews, special features and more.
           </p>
+          <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.2rem", letterSpacing: "0.18em", color: "var(--ink)", lineHeight: 1.4, marginTop: "8px" }}>
+            2026 COLLEGE PREVIEW<br />
+            <span style={{ color: "var(--gold)", fontSize: "1rem" }}>AVAILABLE ON NEWSSTANDS &amp; AMAZON</span>
+          </div>
         </div>
         <div className="hero-right">
           <div className="hero-graphic" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "18px" }}>
-            <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.6rem", letterSpacing: "0.18em", color: "var(--ink)", textAlign: "center", lineHeight: 1.4 }}>
-              2026 COLLEGE PREVIEW<br />
-              <span style={{ color: "var(--gold)", fontSize: "1.2rem" }}>AVAILABLE ON NEWSSTANDS &amp; AMAZON</span>
-            </div>
             <a href="https://www.amazon.com/dp/B0H26X59TV" target="_blank" rel="noopener noreferrer">
               <img
                 src="/cover.jpg"
