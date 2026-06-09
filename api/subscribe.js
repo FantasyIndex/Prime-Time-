@@ -25,6 +25,19 @@ module.exports = async function handler(req, res) {
     "betting-tips": 4,
   };
 
+  const payload = {
+    email,
+    attributes: {
+      FIRSTNAME: firstName || "",
+      LASTNAME: lastName || "",
+      CONFERENCE: conference || "",
+    },
+    listIds: source && LIST_IDS[source] ? [LIST_IDS[source]] : [],
+    updateEnabled: true,
+  };
+
+  console.log("Sending to Brevo:", JSON.stringify(payload));
+
   try {
     const response = await fetch("https://api.brevo.com/v3/contacts", {
       method: "POST",
@@ -33,27 +46,19 @@ module.exports = async function handler(req, res) {
         "content-type": "application/json",
         "api-key": apiKey,
       },
-      body: JSON.stringify({
-        email,
-        attributes: {
-          FIRSTNAME: firstName || "",
-          LASTNAME: lastName || "",
-          CONFERENCE: conference || "",
-        },
-        listIds: source && LIST_IDS[source] ? [LIST_IDS[source]] : [],
-        updateEnabled: true,
-      }),
+      body: JSON.stringify(payload),
     });
 
+    const responseText = await response.text();
+    console.log("Brevo status:", response.status, "body:", responseText);
+
     if (!response.ok) {
-      const err = await response.json();
-      console.error("Brevo error:", err);
-      return res.status(500).json({ error: "Failed to subscribe" });
+      return res.status(500).json({ error: "Failed to subscribe", detail: responseText });
     }
 
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error("Subscribe error:", err);
-    return res.status(500).json({ error: "Server error" });
+    return res.status(500).json({ error: "Server error", detail: String(err) });
   }
 }
