@@ -333,12 +333,15 @@ export default function Poll() {
               </div>
               {RESULTS.map((r) => (
                 <div key={r.id} style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "14px" }}>
-                  {/* Question mark placeholder */}
-                  <div style={{ width: "32px", height: "32px", borderRadius: "50%", background: "rgba(0,0,0,0.08)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.1rem", color: "var(--mid)" }}>?</div>
+                  {r.logo ? (
+                    <img src={r.logo} alt={r.team} style={{ width: "32px", height: "32px", objectFit: "contain", flexShrink: 0 }} />
+                  ) : (
+                    <span style={{ width: "32px", height: "32px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.2rem", flexShrink: 0 }}>🏈</span>
+                  )}
                   <div style={{ flex: 1 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "5px" }}>
-                      <span style={{ fontSize: "0.82rem", color: "var(--mid)", letterSpacing: "0.04em" }}>{RESULTS.indexOf(r) === 4 ? "Other" : `Team ${RESULTS.indexOf(r) + 1}`}</span>
-                      <span style={{ fontSize: "0.82rem", color: "rgba(0,0,0,0.2)", filter: "blur(4px)", userSelect: "none" }}>??%</span>
+                      <span style={{ fontSize: "0.82rem", color: "var(--ink)", letterSpacing: "0.04em" }}>{r.team}</span>
+                      <span style={{ fontSize: "0.82rem", color: "rgba(0,0,0,0.25)", filter: "blur(5px)", userSelect: "none" }}>00%</span>
                     </div>
                     <div style={{ height: "8px", background: "rgba(0,0,0,0.08)", borderRadius: "4px", overflow: "hidden" }}>
                       <div style={{ height: "100%", width: `${r.pct}%`, background: "rgba(0,0,0,0.12)", borderRadius: "4px" }} />
@@ -346,9 +349,6 @@ export default function Poll() {
                   </div>
                 </div>
               ))}
-              <p style={{ fontSize: "0.72rem", color: "var(--mid)", marginTop: "16px", marginBottom: 0, letterSpacing: "0.05em" }}>
-                Sign up below to reveal the full breakdown
-              </p>
             </div>
 
             {/* Sign-up form */}
