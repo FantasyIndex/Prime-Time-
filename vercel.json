@@ -2,7 +2,9 @@
   "buildCommand": "node vercel-build.mjs",
   "outputDirectory": "artifacts/prime-time-sports/dist/public",
   "installCommand": "echo 'deps handled in build script'",
-  "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
