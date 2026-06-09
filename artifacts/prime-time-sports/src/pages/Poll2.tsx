@@ -96,18 +96,82 @@ const POLLS: Poll[] = [
   },
   {
     question: <>Which NFL coach is on the <span style={{ color: "var(--gold)" }}>hottest seat</span> in 2026?</>,
-    nextTeaser: <>Which quarterback will win <span style={{ color: "var(--gold)" }}>MVP</span> in 2026?</>,
+    nextTeaser: <>Which NFL tight end will have the <span style={{ color: "var(--gold)" }}>best season</span> in 2026?</>,
     options: [
-      { id: "harbaugh_j", name: "Jim Harbaugh",    tagline: "Chargers' Savior?",   logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png" },
-      { id: "ryan",       name: "Matt Ryan",       tagline: "Indy Experiment",     logo: "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png" },
-      { id: "daboll",     name: "Brian Daboll",    tagline: "Giants Under Pressure",logo: "https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png" },
-      { id: "flores",     name: "Mike Flores",     tagline: "Minnesota Rebuild",   logo: "https://a.espncdn.com/i/teamlogos/nfl/500/min.png" },
+      { id: "harbaugh_j", name: "Jim Harbaugh",    tagline: "Chargers' Savior?",    logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png" },
+      { id: "ryan",       name: "Matt Ryan",       tagline: "Indy Experiment",      logo: "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png" },
+      { id: "daboll",     name: "Brian Daboll",    tagline: "Giants Under Pressure", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png" },
+      { id: "flores",     name: "Mike Flores",     tagline: "Minnesota Rebuild",    logo: "https://a.espncdn.com/i/teamlogos/nfl/500/min.png" },
     ],
     results: [
       { id: "daboll",     name: "Brian Daboll",    pct: 38, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png" },
       { id: "ryan",       name: "Matt Ryan",       pct: 27, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/ind.png" },
       { id: "harbaugh_j", name: "Jim Harbaugh",    pct: 20, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png" },
       { id: "flores",     name: "Mike Flores",     pct: 15, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/min.png" },
+    ],
+  },
+  {
+    question: <>Which NFL tight end will have the <span style={{ color: "var(--gold)" }}>best season</span> in 2026?</>,
+    nextTeaser: <>Which team will lead the NFL in <span style={{ color: "var(--gold)" }}>regular season wins</span> in 2026?</>,
+    options: [
+      { id: "kelce",    name: "Travis Kelce",  tagline: "The GOAT TE",       logo: "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png"  },
+      { id: "andrews",  name: "Mark Andrews",  tagline: "Baltimore's Rock",   logo: "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png" },
+      { id: "kittle",   name: "George Kittle", tagline: "Most Complete TE",   logo: "https://a.espncdn.com/i/teamlogos/nfl/500/sf.png"  },
+      { id: "laporta",  name: "Sam LaPorta",   tagline: "Detroit's Breakout", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/det.png" },
+    ],
+    results: [
+      { id: "kelce",   name: "Travis Kelce",  pct: 39, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png"  },
+      { id: "kittle",  name: "George Kittle", pct: 28, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/sf.png"  },
+      { id: "andrews", name: "Mark Andrews",  pct: 21, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png" },
+      { id: "laporta", name: "Sam LaPorta",   pct: 12, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/det.png" },
+    ],
+  },
+  {
+    question: <>Which team will lead the NFL in <span style={{ color: "var(--gold)" }}>regular season wins</span> in 2026?</>,
+    nextTeaser: <>Which quarterback will throw the most <span style={{ color: "var(--gold)" }}>touchdown passes</span> in 2026?</>,
+    options: [
+      { id: "chiefs",  name: "Kansas City Chiefs",  tagline: "Still the Standard",  logo: "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png"  },
+      { id: "eagles",  name: "Philadelphia Eagles", tagline: "Defending Champs",     logo: "https://a.espncdn.com/i/teamlogos/nfl/500/phi.png" },
+      { id: "ravens",  name: "Baltimore Ravens",    tagline: "Lamar's Crew",         logo: "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png" },
+      { id: "bills",   name: "Buffalo Bills",       tagline: "Josh's Window",        logo: "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png" },
+    ],
+    results: [
+      { id: "chiefs",  name: "Kansas City Chiefs",  pct: 36, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png"  },
+      { id: "eagles",  name: "Philadelphia Eagles", pct: 26, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/phi.png" },
+      { id: "ravens",  name: "Baltimore Ravens",    pct: 23, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png" },
+      { id: "bills",   name: "Buffalo Bills",       pct: 15, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png" },
+    ],
+  },
+  {
+    question: <>Which quarterback will throw the most <span style={{ color: "var(--gold)" }}>touchdown passes</span> in 2026?</>,
+    nextTeaser: <>Which NFL team will be the biggest <span style={{ color: "var(--gold)" }}>surprise</span> of 2026?</>,
+    options: [
+      { id: "mahomes", name: "Patrick Mahomes", tagline: "Precision on Command",  logo: "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png"  },
+      { id: "allen",   name: "Josh Allen",      tagline: "Arm Talent Unleashed",  logo: "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png" },
+      { id: "lamar",   name: "Lamar Jackson",   tagline: "Dual-Threat Terror",    logo: "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png" },
+      { id: "burrow",  name: "Joe Burrow",      tagline: "Ice in His Veins",      logo: "https://a.espncdn.com/i/teamlogos/nfl/500/cin.png" },
+    ],
+    results: [
+      { id: "allen",   name: "Josh Allen",      pct: 34, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png" },
+      { id: "mahomes", name: "Patrick Mahomes", pct: 31, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png"  },
+      { id: "lamar",   name: "Lamar Jackson",   pct: 22, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png" },
+      { id: "burrow",  name: "Joe Burrow",      pct: 13, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/cin.png" },
+    ],
+  },
+  {
+    question: <>Which NFL team will be the biggest <span style={{ color: "var(--gold)" }}>surprise</span> of 2026?</>,
+    nextTeaser: <>Which NFL quarterback will win <span style={{ color: "var(--gold)" }}>MVP</span> in 2026?</>,
+    options: [
+      { id: "lions",    name: "Detroit Lions",      tagline: "ARSB & Gibbs Era",     logo: "https://a.espncdn.com/i/teamlogos/nfl/500/det.png" },
+      { id: "texans",   name: "Houston Texans",     tagline: "Stroud's Ascent",      logo: "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png" },
+      { id: "chargers", name: "Los Angeles Chargers",tagline: "Harbaugh Effect",      logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png" },
+      { id: "packers",  name: "Green Bay Packers",  tagline: "Love's Coming of Age", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png"  },
+    ],
+    results: [
+      { id: "lions",    name: "Detroit Lions",       pct: 32, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/det.png" },
+      { id: "texans",   name: "Houston Texans",      pct: 28, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/hou.png" },
+      { id: "chargers", name: "Los Angeles Chargers",pct: 24, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lac.png" },
+      { id: "packers",  name: "Green Bay Packers",   pct: 16, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png"  },
     ],
   },
 ];
