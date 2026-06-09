@@ -15,6 +15,22 @@ interface Poll {
 
 const POLLS: Poll[] = [
   {
+    question: <>Which NFL team has the absolute <span style={{ color: "var(--gold)" }}>best receiving corps</span> entering 2026?</>,
+    nextTeaser: <>Which NFL quarterback will win <span style={{ color: "var(--gold)" }}>MVP</span> in 2026?</>,
+    options: [
+      { id: "bengals", name: "Cincinnati Bengals", tagline: "Chase & Higgins Duo",         logo: "https://a.espncdn.com/i/teamlogos/nfl/500/cin.png" },
+      { id: "cowboys", name: "Dallas Cowboys",     tagline: "CeeDee Lamb Dominance",       logo: "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png" },
+      { id: "rams",    name: "Los Angeles Rams",   tagline: "Nacua & Kupp Tactical Depth", logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lar.png" },
+      { id: "bears",   name: "Chicago Bears",      tagline: "Odunze & Burden Youth Move",  logo: "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png" },
+    ],
+    results: [
+      { id: "bengals", name: "Cincinnati Bengals", pct: 34, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/cin.png" },
+      { id: "cowboys", name: "Dallas Cowboys",     pct: 29, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png" },
+      { id: "bears",   name: "Chicago Bears",      pct: 20, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/chi.png" },
+      { id: "rams",    name: "Los Angeles Rams",   pct: 12, logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lar.png" },
+    ],
+  },
+  {
     question: <>Which NFL quarterback will win <span style={{ color: "var(--gold)" }}>MVP</span> in 2026?</>,
     nextTeaser: <>Which NFL team will win <span style={{ color: "var(--gold)" }}>Super Bowl LX</span>?</>,
     options: [
@@ -304,7 +320,7 @@ const POLLS: Poll[] = [
   },
   {
     question: <>Which coach will win <span style={{ color: "var(--gold)" }}>Coach of the Year</span> in 2026?</>,
-    nextTeaser: <>Which NFL quarterback will win <span style={{ color: "var(--gold)" }}>MVP</span> in 2026?</>,
+    nextTeaser: <>Which NFL team has the absolute <span style={{ color: "var(--gold)" }}>best receiving corps</span> entering 2026?</>,
     options: [
       { id: "reid",      name: "Andy Reid",       tagline: "The Gold Standard",    logo: "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png"  },
       { id: "shanahan",  name: "Kyle Shanahan",   tagline: "Scheme Master",        logo: "https://a.espncdn.com/i/teamlogos/nfl/500/sf.png"  },
