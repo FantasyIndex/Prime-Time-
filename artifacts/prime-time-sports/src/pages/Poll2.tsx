@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import "../styles/prime-time.css";
 
-type Phase = "vote" | "results" | "countdown" | "gate";
+type Phase = "vote" | "results" | "gate";
 
 interface PollOption  { id: string; name: string; tagline: string; logo: string }
 interface PollResult  { id: string; name: string; pct: number; logo: string }
@@ -372,16 +372,9 @@ export default function Poll2() {
   const poll = POLLS[pollIndex];
   const nextPoll = POLLS[(pollIndex + 1) % POLLS.length];
 
-  /* ── auto-advance results → countdown after 4 s ── */
+  /* ── countdown within results, then advance to next poll ── */
   useEffect(() => {
     if (phase !== "results") return;
-    const id = setTimeout(() => setPhase("countdown"), 4000);
-    return () => clearTimeout(id);
-  }, [phase, pollIndex]);
-
-  /* ── countdown 5→0 then advance to next poll ── */
-  useEffect(() => {
-    if (phase !== "countdown") return;
     setCountdown(5);
     const id = setInterval(() => {
       setCountdown(prev => {
@@ -492,37 +485,12 @@ export default function Poll2() {
               <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.1rem", letterSpacing: "0.15em", color: "var(--ink)", marginBottom: "20px" }}>Current Results</div>
               {poll.results.map(r => <ResultBar key={r.id} name={r.name} pct={r.pct} logo={r.logo} isUserPick={r.id === currentVote} />)}
             </div>
-            <div style={{ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginTop: "8px" }}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2.5" strokeLinecap="round" style={{ animation: "spin 1s linear infinite", flexShrink: 0 }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginTop: "8px" }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2.5" strokeLinecap="round" style={{ animation: "spin 1s linear infinite", flexShrink: 0 }}>
                 <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
               </svg>
-              <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--gold)" }}>Next poll loading…</span>
-            </div>
-          </div>
-        )}
-
-        {/* ══ COUNTDOWN ══ */}
-        {phase === "countdown" && (
-          <div style={{ width: "100%", maxWidth: "600px", textAlign: "center" }}>
-            <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "32px" }}>
-              Coming Up Next
-            </div>
-            <div key={countdown} style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 900, fontSize: "clamp(5rem, 20vw, 9rem)", lineHeight: 1, color: "var(--ink)", marginBottom: "40px", animation: "countPop 0.35s ease-out" }}>
-              {countdown}
-            </div>
-            <div className="poll-card" style={{ background: "white", borderRadius: "6px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)", textAlign: "center" }}>
-              <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "0.75rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "14px" }}>Next Question</div>
-              <h2 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 800, fontSize: "clamp(1.4rem, 3.5vw, 2rem)", color: "var(--ink)", lineHeight: 1.25, margin: 0 }}>
-                {poll.nextTeaser}
-              </h2>
-              <div style={{ marginTop: "20px", display: "flex", justifyContent: "center", gap: "16px", flexWrap: "wrap" }}>
-                {nextPoll.options.map(o => (
-                  <img key={o.id} src={o.logo} alt={o.name} style={{ width: "36px", height: "36px", objectFit: "contain", opacity: 0.45 }} />
-                ))}
-              </div>
-            </div>
-            <div style={{ marginTop: "32px", height: "4px", background: "rgba(0,0,0,0.08)", borderRadius: "2px", overflow: "hidden" }}>
-              <div style={{ height: "100%", background: "var(--gold)", borderRadius: "2px", width: `${((5 - countdown) / 5) * 100}%`, transition: "width 0.9s linear" }} />
+              <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--gold)" }}>Next poll loading in</span>
+              <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 900, fontSize: "1.1rem", color: "var(--gold)", minWidth: "1ch", textAlign: "center" }}>{countdown}</span>
             </div>
           </div>
         )}
