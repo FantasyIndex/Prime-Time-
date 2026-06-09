@@ -77,7 +77,7 @@ export default function Poll2() {
   /* ── auto-advance from results1 → countdown after 2 s ── */
   useEffect(() => {
     if (phase !== "results1") return;
-    const id = setTimeout(() => setPhase("countdown"), 2000);
+    const id = setTimeout(() => setPhase("countdown"), 4000);
     return () => clearTimeout(id);
   }, [phase]);
 
