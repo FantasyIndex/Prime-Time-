@@ -566,9 +566,8 @@ export default function Poll2() {
             <img src="/cover.jpg" alt="Prime Time Sports 2026" style={{ width: "100%", height: "auto", display: "block" }} />
           </a>
           <div style={{ padding: "20px 18px 24px" }}>
-            <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "8px" }}>Prime Time Sports</div>
             <h3 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 800, fontSize: "1rem", color: "white", margin: "0 0 10px", lineHeight: 1.3 }}>
-              2026 College Football Season Preview
+              2026 College Football Magazine!
             </h3>
             <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: "0.8rem", color: "rgba(255,255,255,0.55)", margin: "0 0 18px", lineHeight: 1.6 }}>
               Team profiles, player reviews, betting breakdowns &amp; full conference previews.
