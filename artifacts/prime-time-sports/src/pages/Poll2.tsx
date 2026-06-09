@@ -255,16 +255,16 @@ export default function Poll2() {
               </h2>
             </div>
 
-            {/* Teaser with question marks */}
+            {/* Teaser with logos visible, percentages blurred */}
             <div className="poll-card" style={{ background: "white", borderRadius: "6px", marginBottom: "24px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)" }}>
               <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.1rem", letterSpacing: "0.15em", color: "var(--ink)", marginBottom: "20px" }}>Current Results</div>
               {Q2_RESULTS.map(r => (
                 <div key={r.id} style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "14px" }}>
-                  <div style={{ width: "32px", height: "32px", borderRadius: "50%", background: "rgba(0,0,0,0.08)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.1rem", color: "var(--mid)" }}>?</div>
+                  <img src={r.logo} alt={r.name} style={{ width: "32px", height: "32px", objectFit: "contain", flexShrink: 0 }} />
                   <div style={{ flex: 1 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "5px" }}>
-                      <span style={{ fontSize: "0.82rem", color: "var(--mid)", letterSpacing: "0.04em" }}>Team {Q2_RESULTS.indexOf(r) + 1}</span>
-                      <span style={{ fontSize: "0.82rem", color: "rgba(0,0,0,0.2)", filter: "blur(4px)", userSelect: "none" }}>??%</span>
+                      <span style={{ fontSize: "0.82rem", color: "var(--ink)", letterSpacing: "0.04em" }}>{r.name}</span>
+                      <span style={{ fontSize: "0.82rem", color: "rgba(0,0,0,0.25)", filter: "blur(5px)", userSelect: "none" }}>00%</span>
                     </div>
                     <div style={{ height: "8px", background: "rgba(0,0,0,0.08)", borderRadius: "4px", overflow: "hidden" }}>
                       <div style={{ height: "100%", width: `${r.pct}%`, background: "rgba(0,0,0,0.12)", borderRadius: "4px" }} />
@@ -272,7 +272,6 @@ export default function Poll2() {
                   </div>
                 </div>
               ))}
-              <p style={{ fontSize: "0.72rem", color: "var(--mid)", marginTop: "16px", marginBottom: 0, letterSpacing: "0.05em" }}>Sign up below to reveal the full breakdown</p>
             </div>
 
             {/* Sign-up form */}
