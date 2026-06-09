@@ -476,7 +476,12 @@ export default function Poll2() {
               <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.1rem", letterSpacing: "0.15em", color: "var(--ink)", marginBottom: "20px" }}>Current Results</div>
               {poll.results.map(r => <ResultBar key={r.id} name={r.name} pct={r.pct} logo={r.logo} isUserPick={r.id === currentVote} />)}
             </div>
-            <div style={{ textAlign: "center", color: "var(--mid)", fontSize: "0.85rem", letterSpacing: "0.05em", opacity: 0.6 }}>Next question loading…</div>
+            <div style={{ textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", marginTop: "8px" }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2.5" strokeLinecap="round" style={{ animation: "spin 1s linear infinite", flexShrink: 0 }}>
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+              </svg>
+              <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--gold)" }}>Next poll loading…</span>
+            </div>
           </div>
         )}
 
@@ -584,6 +589,10 @@ export default function Poll2() {
         @keyframes countPop {
           0%   { transform: scale(1.4); opacity: 0.4; }
           100% { transform: scale(1);   opacity: 1;   }
+        }
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to   { transform: rotate(360deg); }
         }
       `}</style>
     </div>
