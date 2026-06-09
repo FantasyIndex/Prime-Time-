@@ -559,7 +559,29 @@ export default function Poll2() {
         )}
       </section>
 
-      <footer style={{ background: "var(--ink)", color: "white", padding: "40px 40px 28px", marginTop: "auto" }}>
+      {/* ── MAGAZINE AD ── */}
+      <div style={{ background: "var(--ink)", padding: "48px 40px" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto", display: "flex", alignItems: "center", gap: "48px", flexWrap: "wrap", justifyContent: "center" }}>
+          <a href="https://www.amazon.com/dp/B0H26X59TV" target="_blank" rel="noopener noreferrer" style={{ flexShrink: 0 }}>
+            <img src="/cover.jpg" alt="Prime Time Sports 2026" style={{ width: "140px", height: "auto", borderRadius: "4px", boxShadow: "-6px 6px 28px rgba(0,0,0,0.7)", display: "block" }} />
+          </a>
+          <div style={{ flex: 1, minWidth: "240px" }}>
+            <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "0.75rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "10px" }}>Prime Time Sports</div>
+            <h3 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 800, fontSize: "clamp(1.4rem, 3vw, 2rem)", color: "white", margin: "0 0 12px", lineHeight: 1.2 }}>
+              2026 College Football<br />Season Preview
+            </h3>
+            <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: "0.95rem", color: "rgba(255,255,255,0.6)", margin: "0 0 24px", lineHeight: 1.6 }}>
+              Team profiles, player reviews, betting breakdowns, and full conference previews — all in one magazine.
+            </p>
+            <a href="https://www.amazon.com/dp/B0H26X59TV" target="_blank" rel="noopener noreferrer"
+              style={{ display: "inline-block", padding: "14px 36px", background: "var(--gold)", color: "var(--ink)", fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.15em", textTransform: "uppercase", borderRadius: "4px", textDecoration: "none" }}>
+              Buy on Amazon →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <footer style={{ background: "var(--ink)", color: "white", padding: "40px 40px 28px", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "16px", maxWidth: "1200px", margin: "0 auto" }}>
           <img src="/logo.png" alt="Prime Time Sports" style={{ height: "52px", opacity: 0.85 }} />
           <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", margin: 0 }}>© 2026 Prime Time Sports. All rights reserved.</p>
