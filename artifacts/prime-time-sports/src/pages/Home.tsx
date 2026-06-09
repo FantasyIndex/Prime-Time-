@@ -69,11 +69,13 @@ export default function Home() {
               2026 COLLEGE PREVIEW<br />
               <span style={{ color: "var(--gold)", fontSize: "1.2rem" }}>AVAILABLE ON NEWSSTANDS &amp; AMAZON</span>
             </div>
-            <img
-              src="/cover.jpg"
-              alt="Prime Time Sports College Football 2026"
-              className="cover-float"
-            />
+            <a href="https://www.amazon.com/dp/B0H26X59TV" target="_blank" rel="noopener noreferrer">
+              <img
+                src="/cover.jpg"
+                alt="Prime Time Sports College Football 2026"
+                className="cover-float"
+              />
+            </a>
           </div>
         </div>
       </section>
