@@ -8,6 +8,7 @@ import Home from "@/pages/Home";
 import BettingTips from "@/pages/BettingTips";
 import MailingList from "@/pages/MailingList";
 import Poll from "@/pages/Poll";
+import Poll2 from "@/pages/Poll2";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ function Router() {
       <Route path="/betting-tips" component={BettingTips} />
       <Route path="/mailing-list" component={MailingList} />
       <Route path="/poll" component={Poll} />
+      <Route path="/poll-2" component={Poll2} />
       <Route component={NotFound} />
     </Switch>
   );
