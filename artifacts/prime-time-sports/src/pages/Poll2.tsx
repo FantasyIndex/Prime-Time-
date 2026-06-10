@@ -336,7 +336,7 @@ const POLLS: Poll[] = [
   },
 ];
 
-const GATE_POLL_INDEX = 4; // gate fires on the fifth poll
+const GATE_POLL_INDEX = 2; // gate fires on the third poll
 
 function ResultBar({ name, pct, logo, isUserPick }: { name: string; pct: number; logo: string; isUserPick: boolean }) {
   return (
@@ -365,7 +365,8 @@ export default function Poll2() {
   const [signedUp,     setSignedUp]     = useState(() => localStorage.getItem("pts_signed_up") === "1");
   const [selected,     setSelected]     = useState<string | null>(null);
   const [countdown,    setCountdown]    = useState(5);
-  const [gateForm,     setGateForm]     = useState({ firstName: "", lastName: "", email: "" });
+  const [skipped,      setSkipped]      = useState(() => sessionStorage.getItem("pts_skipped") === "1");
+  const [gateEmail,    setGateEmail]    = useState("");
   const [gateAgree,    setGateAgree]    = useState(true);
   const [gateError,    setGateError]    = useState("");
   const [gateSubmitting, setGateSubmitting] = useState(false);
@@ -395,14 +396,21 @@ export default function Poll2() {
   function handleVote(e: React.FormEvent) {
     e.preventDefault();
     if (!selected) return;
-    const needsGate = pollIndex === GATE_POLL_INDEX && !signedUp;
+    const needsGate = pollIndex === GATE_POLL_INDEX && !signedUp && !skipped;
     setPhase(needsGate ? "gate" : "results");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function handleSkip() {
+    sessionStorage.setItem("pts_skipped", "1");
+    setSkipped(true);
+    setPhase("results");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   async function handleGate(e: React.FormEvent) {
     e.preventDefault();
-    if (!gateForm.email || !gateForm.email.includes("@")) { setGateError("Please enter a valid email address."); return; }
+    if (!gateEmail || !gateEmail.includes("@")) { setGateError("Please enter a valid email address."); return; }
     if (!gateAgree) { setGateError("Please agree to receive emails to continue."); return; }
     setGateError("");
     setGateSubmitting(true);
@@ -410,7 +418,7 @@ export default function Poll2() {
       await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: gateForm.email, firstName: gateForm.firstName, lastName: gateForm.lastName, source: "poll" }),
+        body: JSON.stringify({ email: gateEmail, source: "poll" }),
       });
     } catch { /* fail silently */ }
     setGateSubmitting(false);
@@ -441,6 +449,27 @@ export default function Poll2() {
           <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, letterSpacing: "0.2em", fontSize: "0.9rem", color: "var(--gold)" }}>Fan Poll</span>
           <span style={{ display: "inline-block", width: "32px", height: "3px", background: "var(--gold)" }} />
         </div>
+
+        {/* progress dots */}
+        {phase === "vote" && (
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "20px" }}>
+            {POLLS.slice(0, GATE_POLL_INDEX + 1).map((_, i) => (
+              <div key={i} style={{ width: i === pollIndex ? "28px" : "10px", height: "10px", borderRadius: "99px", background: i < pollIndex ? "var(--gold)" : i === pollIndex ? "var(--ink)" : "rgba(0,0,0,0.15)", transition: "all 0.3s ease" }} />
+            ))}
+            <span style={{ fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--mid)", marginLeft: "4px" }}>
+              Poll {Math.min(pollIndex + 1, GATE_POLL_INDEX + 1)} of {GATE_POLL_INDEX + 1}
+            </span>
+          </div>
+        )}
+
+        {/* pre-gate teaser banner */}
+        {phase === "vote" && pollIndex >= 1 && !signedUp && !skipped && (
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", background: "var(--ink)", color: "white", borderRadius: "4px", padding: "10px 20px", marginBottom: "28px", fontSize: "0.78rem", letterSpacing: "0.06em" }}>
+            <span style={{ color: "var(--gold)", fontWeight: 700 }}>🏈</span>
+            <span>Sign up free to unlock all polls + get weekly betting picks</span>
+            <a href="/mailing-list" style={{ color: "var(--gold)", fontWeight: 700, textDecoration: "none", whiteSpace: "nowrap" }}>Join now →</a>
+          </div>
+        )}
 
         {/* ══ VOTE ══ */}
         {phase === "vote" && (
@@ -493,7 +522,7 @@ export default function Poll2() {
           </div>
         )}
 
-        {/* ══ GATE (fires once, on poll index 1) ══ */}
+        {/* ══ GATE ══ */}
         {phase === "gate" && (
           <div style={{ width: "100%", maxWidth: "600px" }}>
             <div style={{ textAlign: "center", marginBottom: "40px" }}>
@@ -525,22 +554,15 @@ export default function Poll2() {
 
             {/* Sign-up form */}
             <form onSubmit={handleGate} className="poll-card" style={{ background: "white", borderRadius: "6px", boxShadow: "0 2px 16px rgba(0,0,0,0.07)" }}>
-              <div style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "1.1rem", letterSpacing: "0.12em", color: "var(--ink)", marginBottom: "20px" }}>Sign up to keep taking polls</div>
-              <div className="poll-name-row">
-                <div>
-                  <label style={{ display: "block", fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--mid)", marginBottom: "6px" }}>First Name</label>
-                  <input type="text" placeholder="Jordan" value={gateForm.firstName} onChange={e => setGateForm({ ...gateForm, firstName: e.target.value })}
-                    style={{ width: "100%", padding: "12px 14px", fontSize: "0.9rem", fontFamily: "'DM Sans', sans-serif", border: "2px solid rgba(0,0,0,0.12)", borderRadius: "4px", color: "var(--ink)", outline: "none", boxSizing: "border-box" }} />
-                </div>
-                <div>
-                  <label style={{ display: "block", fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--mid)", marginBottom: "6px" }}>Last Name</label>
-                  <input type="text" placeholder="Mitchell" value={gateForm.lastName} onChange={e => setGateForm({ ...gateForm, lastName: e.target.value })}
-                    style={{ width: "100%", padding: "12px 14px", fontSize: "0.9rem", fontFamily: "'DM Sans', sans-serif", border: "2px solid rgba(0,0,0,0.12)", borderRadius: "4px", color: "var(--ink)", outline: "none", boxSizing: "border-box" }} />
-                </div>
-              </div>
+              <h3 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 800, fontSize: "1.3rem", color: "var(--ink)", margin: "0 0 6px" }}>
+                You're on a roll — keep voting free
+              </h3>
+              <p style={{ fontSize: "0.82rem", color: "var(--mid)", margin: "0 0 6px", lineHeight: 1.6 }}>
+                Join 8,400+ college football fans and get free picks every week.
+              </p>
               <div style={{ marginBottom: "18px" }}>
-                <label style={{ display: "block", fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--mid)", marginBottom: "6px" }}>Email Address *</label>
-                <input type="email" placeholder="you@example.com" value={gateForm.email} onChange={e => setGateForm({ ...gateForm, email: e.target.value })}
+                <label style={{ display: "block", fontSize: "0.72rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--mid)", marginBottom: "6px" }}>Email Address</label>
+                <input type="email" placeholder="you@example.com" value={gateEmail} onChange={e => setGateEmail(e.target.value)}
                   style={{ width: "100%", padding: "12px 14px", fontSize: "0.9rem", fontFamily: "'DM Sans', sans-serif", border: "2px solid rgba(0,0,0,0.12)", borderRadius: "4px", color: "var(--ink)", outline: "none", boxSizing: "border-box" }} />
               </div>
               <div style={{ display: "flex", alignItems: "flex-start", gap: "10px", marginBottom: "20px" }}>
@@ -553,7 +575,11 @@ export default function Poll2() {
               {gateError && <p style={{ fontSize: "0.82rem", color: "#B94B2A", marginBottom: "14px" }}>{gateError}</p>}
               <button type="submit" disabled={gateSubmitting}
                 style={{ width: "100%", padding: "16px", background: "var(--ink)", color: "var(--gold)", border: "none", borderRadius: "4px", fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.15em", textTransform: "uppercase", cursor: "pointer" }}>
-                {gateSubmitting ? "Submitting…" : "Submit"}
+                {gateSubmitting ? "Submitting…" : "Unlock More Polls →"}
+              </button>
+              <button type="button" onClick={handleSkip}
+                style={{ display: "block", width: "100%", marginTop: "12px", padding: "10px", background: "none", border: "none", fontFamily: "'DM Sans', sans-serif", fontSize: "0.78rem", color: "var(--mid)", cursor: "pointer", textAlign: "center", letterSpacing: "0.04em" }}>
+                No thanks, skip for now
               </button>
             </form>
           </div>
