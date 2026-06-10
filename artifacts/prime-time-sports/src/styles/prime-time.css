@@ -758,24 +758,24 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  gap: 56px;
+  gap: 0;
+  position: relative;
 }
 
 .poll-main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1;
+  width: 100%;
   max-width: 760px;
 }
 
 .poll-sidebar {
   width: 210px;
   flex-shrink: 0;
-  position: sticky;
-  top: 120px;
-  margin-top: 60px;
-  margin-left: auto;
+  position: absolute;
+  right: 40px;
+  top: 170px;
   background: var(--ink);
   border-radius: 6px;
   overflow: hidden;
