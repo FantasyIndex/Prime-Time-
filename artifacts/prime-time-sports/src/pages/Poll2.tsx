@@ -570,7 +570,7 @@ export default function Poll2() {
               2026 College Football Magazine!
             </h3>
             <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300, fontSize: "0.8rem", color: "rgba(255,255,255,0.55)", margin: "0 0 18px", lineHeight: 1.6 }}>
-              Team profiles, player reviews, betting breakdowns &amp; full conference previews.
+              Team profiles, player reviews, betting breakdowns &amp; feature piece journalism.
             </p>
             <a href="https://www.amazon.com/dp/B0H26X59TV" target="_blank" rel="noopener noreferrer"
               style={{ display: "block", textAlign: "center", padding: "12px", background: "var(--gold)", color: "var(--ink)", fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: "0.78rem", letterSpacing: "0.12em", textTransform: "uppercase", borderRadius: "4px", textDecoration: "none" }}>
